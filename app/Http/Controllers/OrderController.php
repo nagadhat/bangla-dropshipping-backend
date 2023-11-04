@@ -19,6 +19,28 @@ class OrderController extends BaseController
         $this->orderRepository = $orderRepository;
     }
 
+     /**
+     * @OA\Get(
+     *      path="/orders",
+     *      operationId="index",
+     *      tags={"Order list"},
+     *      summary="Get list of orders",
+     *      description="Returns list of orders",
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     *     )
+     */
     public function index(): JsonResponse 
     {
         return response()->json([
