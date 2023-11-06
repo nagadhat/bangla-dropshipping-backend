@@ -11,11 +11,18 @@ class ProductController extends Controller
     public function index(){
         
         $products = Product::all();
+
         return response()->json([
+            
             'data' => $products
         ]);
     }
     public function store(Request $request){
+
+        //  return response()->json([
+        //             'valid' => auth()->check(),
+        //             'message' => $request->name
+        //         ]);
 
         $validator = Validator::make($request->all(), [
             'name' => 'required',
@@ -38,6 +45,7 @@ class ProductController extends Controller
 
             if($product){
                 return response()->json([
+                    
                     'message' => 'Product inserted successfully..'
                 ]);
             }else{

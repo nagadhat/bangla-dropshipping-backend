@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
 
 
 
@@ -29,6 +30,10 @@ Route::middleware('auth:api')->group( function () {
     Route::post('orders', [OrderController::class, 'store']);
     Route::put('orders/{id}', [OrderController::class, 'update']);
     Route::delete('orders/{id}', [OrderController::class, 'delete']);
+
+    // Category routes
+    Route::get('categories', [CategoryController::class, 'index']);
+    Route::post('add/category', [CategoryController::class, 'store']);
 
     // Product routes
     Route::get('products', [ProductController::class, 'index']);
