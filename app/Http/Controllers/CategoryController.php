@@ -37,9 +37,9 @@ class CategoryController extends Controller
             ]);
 
         }else{
-            $image = $request->file('cat_image');
+            $image = $request->file('icon');
 
-            if( $request->has('cat_image')){
+            if( $request->has('icon')){
                 $image_name = rand(). $image->getClientOriginalName();
                 $image_folder = public_path('/images/category-images');
                 $image->move($image_folder, $image_name);
