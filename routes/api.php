@@ -6,6 +6,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\SubCategoryController;
 
 
 
@@ -23,6 +24,8 @@ use App\Http\Controllers\CategoryController;
 Route::post('register', [RegisterController::class, 'register']);
 Route::post('login', [RegisterController::class, 'login']);
 Route::get('categories', [CategoryController::class, 'index']);
+Route::get('sub-categories/{id}', [SubCategoryController::class, 'index']);
+
 
 Route::middleware('auth:api')->group( function () {
     // Order routes
@@ -36,6 +39,11 @@ Route::middleware('auth:api')->group( function () {
     Route::post('add/category', [CategoryController::class, 'store']);
     Route::put('update/category/{id}', [CategoryController::class, 'update']);
     Route::delete('delete/category/{id}', [CategoryController::class, 'delete']);
+
+     // Sub-Category routes
+     Route::post('add/sub-category', [SubCategoryController::class, 'store']);
+     Route::put('update/sub-category/{id}', [SubCategoryController::class, 'update']);
+     Route::delete('delete/sub-category/{id}', [SubCategoryController::class, 'delete']);
 
     // Product routes
     Route::get('products', [ProductController::class, 'index']);
