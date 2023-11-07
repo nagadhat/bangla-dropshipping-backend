@@ -131,7 +131,7 @@ class CategoryController extends Controller
         
         $validation = Validator::make( $request->all(), [
             'name' => 'required|max:150',
-            'icon' => 'nullable'
+            'icon' => 'nullable|mimes:png,jpg,jpeg,svg'
         ]); 
 
         if($validation->fails()){
@@ -141,9 +141,22 @@ class CategoryController extends Controller
 
         }else{
 
+            $image = $request->file('icon');
+            // upload image to folder
+            if( $request->has('icon')){
+                $image_name = time().rand().'.'. $image->getClientOriginalExtension();
+                $image_folder = public_path('/images/category-images');
+                $image->move($image_folder, $image_name);
+
+                $image_path = url('/images/category-images'.'/'.$image_name);
+            }
+
+
+
+
             $category -> update([
                 'name' => $request->name,
-                'image' => $request->icon
+                'image' => $image_path
             ]);
             if($category){
                 return response()->json([
