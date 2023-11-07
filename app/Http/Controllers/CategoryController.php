@@ -140,7 +140,6 @@ class CategoryController extends Controller
             ]);
 
         }else{
-
             $image = $request->file('icon');
             // upload image to folder
             if( $request->has('icon')){
@@ -148,16 +147,23 @@ class CategoryController extends Controller
                 $image_folder = public_path('/images/category-images');
                 $image->move($image_folder, $image_name);
 
+                // delete old image from folder
+                $image_old = pathinfo($category->image, PATHINFO_BASENAME);
+                $image_old_path = public_path('/images/category-images'.'/'.$image_old);
+                if(File::exists($image_old_path)){
+                    File::delete($image_old_path);
+                }
+                // end of delete old image from folder
+
                 $image_path = url('/images/category-images'.'/'.$image_name);
             }
-
-
-
+            // end of image upload to folder
 
             $category -> update([
                 'name' => $request->name,
                 'image' => $image_path
-            ]);
+            ]);      
+
             if($category){
                 return response()->json([
                     'massage' => 'Category Updated Successfully',
@@ -176,9 +182,18 @@ class CategoryController extends Controller
 
         if($category){
             $category->delete();
+
+             // delete old image from folder
+             $image_old = pathinfo($category->image, PATHINFO_BASENAME);
+             $image_old_path = public_path('/images/category-images'.'/'.$image_old);
+             if(File::exists($image_old_path)){
+                 File::delete($image_old_path);
+             }
+             // end of delete old image from folder
+
             return response()->json([
                 'massage' => 'Category Deleted Successfully',
-                'data' => $category
+                
             ]);
         }else{
             return response()->json([
