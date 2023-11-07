@@ -1,0 +1,17 @@
+<svg width="22" height="32" viewBox="0 0 22 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="22" height="32" fill="#1E1E1E"/>
+<g id="01-BDS Homepage-v1" clip-path="url(#clip0_0_1)">
+<rect width="1920" height="5852" transform="translate(-484 -1201)" fill="white"/>
+<g id="Categories Section">
+<g id="Item 2">
+<rect id="Logo Placeholder" x="-26.2376" y="-20" width="75.1149" height="72" rx="10" fill="#FFEFED"/>
+<path id="Mobile Icon" d="M18.9072 0H3.73247C2.16758 0 0.887207 1.10769 0.887207 2.46154V29.5385C0.887207 30.8923 2.16758 32 3.73247 32H18.9072C20.4721 32 21.7525 30.8923 21.7525 29.5385V2.46154C21.7525 1.10769 20.4721 0 18.9072 0ZM19.8556 29.5385C19.8556 29.9897 19.4288 30.359 18.9072 30.359H3.73247C3.21084 30.359 2.78405 29.9897 2.78405 29.5385V27.8974H19.8556V29.5385ZM19.8556 26.2564H2.78405V5.74359H19.8556V26.2564ZM19.8556 4.10256H2.78405V2.46154C2.78405 2.01026 3.21084 1.64103 3.73247 1.64103H18.9072C19.4288 1.64103 19.8556 2.01026 19.8556 2.46154V4.10256Z" fill="#FF624C"/>
+</g>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_0_1">
+<rect width="1920" height="5852" fill="white" transform="translate(-484 -1201)"/>
+</clipPath>
+</defs>
+</svg>

@@ -32,10 +32,11 @@ Route::middleware('auth:api')->group( function () {
     Route::delete('orders/{id}', [OrderController::class, 'delete']);
 
     // Category routes
-    Route::get('categories', [CategoryController::class, 'index']);
+  
     Route::post('add/category', [CategoryController::class, 'store']);
 
     // Product routes
     Route::get('products', [ProductController::class, 'index']);
     Route::post('products', [ProductController::class, 'store']);
 });
+Route::get('categories', [CategoryController::class, 'index']);
