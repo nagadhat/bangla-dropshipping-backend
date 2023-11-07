@@ -88,8 +88,8 @@ class CategoryController extends Controller
 
         $validation = Validator::make( $request->all(), [
             'name' => 'required|max:150',
-            // 'image' => 'nullable|mimes:png,jpg,jpeg,svg'
-            'icon' => 'nullable'
+            'icon' => 'nullable|mimes:png,jpg,jpeg,svg'
+            
         ]);
 
         if($validation->fails()){
@@ -98,19 +98,19 @@ class CategoryController extends Controller
             ]);
 
         }else{
-            // $image = $request->file('icon');
-            // // upload image to folder
-            // if( $request->has('icon')){
-            //     $image_name = time().rand().'.'. $image->getClientOriginalExtension();
-            //     $image_folder = public_path('/images/category-images');
-            //     $image->move($image_folder, $image_name);
+            $image = $request->file('icon');
+            // upload image to folder
+            if( $request->has('icon')){
+                $image_name = time().rand().'.'. $image->getClientOriginalExtension();
+                $image_folder = public_path('/images/category-images');
+                $image->move($image_folder, $image_name);
 
-            //     $image_path = url('/images/category-images'.'/'.$image_name);
-            // }
+                $image_path = url('/images/category-images'.'/'.$image_name);
+            }
             $category = Category::create([
                 'name' => $request->name,
-                // 'image' =>  $image_path
-                'image' => $request->icon
+                'image' =>  $image_path
+            
             ]);
             if($category){
                 return response()->json([
@@ -122,6 +122,55 @@ class CategoryController extends Controller
                     'massage' => 'Something went wrong'
                 ]);
             }
+        }
+    }
+
+    public function update(Request $request, $id){
+
+        $category = Category::where('id', $id)->first();
+        
+        $validation = Validator::make( $request->all(), [
+            'name' => 'required|max:150',
+            'icon' => 'nullable'
+        ]); 
+
+        if($validation->fails()){
+            return response()->json([
+                'error' => $validation->massages(),
+            ]);
+
+        }else{
+
+            $category -> update([
+                'name' => $request->name,
+                'image' => $request->icon
+            ]);
+            if($category){
+                return response()->json([
+                    'massage' => 'Category Updated Successfully',
+                    'data' => $category
+                ]);
+
+            }else{
+                return response()->json([
+                    'massage' => 'Something went wrong'
+                ]);
+            }
+        }
+    }
+    public function delete($id){
+        $category = Category::where('id', $id)->first();
+
+        if($category){
+            $category->delete();
+            return response()->json([
+                'massage' => 'Category Deleted Successfully',
+                'data' => $category
+            ]);
+        }else{
+            return response()->json([
+                'massage' => 'Something went wrong'
+            ]);
         }
     }
 }
