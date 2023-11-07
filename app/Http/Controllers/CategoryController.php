@@ -88,7 +88,8 @@ class CategoryController extends Controller
 
         $validation = Validator::make( $request->all(), [
             'name' => 'required|max:150',
-            'image' => 'nullable|mimes:png,jpg,jpeg,svg'
+            // 'image' => 'nullable|mimes:png,jpg,jpeg,svg'
+            'icon' => 'nullable'
         ]);
 
         if($validation->fails()){
@@ -97,18 +98,19 @@ class CategoryController extends Controller
             ]);
 
         }else{
-            $image = $request->file('icon');
-            // upload image to folder
-            if( $request->has('icon')){
-                $image_name = time().rand().'.'. $image->getClientOriginalExtension();
-                $image_folder = public_path('/images/category-images');
-                $image->move($image_folder, $image_name);
+            // $image = $request->file('icon');
+            // // upload image to folder
+            // if( $request->has('icon')){
+            //     $image_name = time().rand().'.'. $image->getClientOriginalExtension();
+            //     $image_folder = public_path('/images/category-images');
+            //     $image->move($image_folder, $image_name);
 
-                $image_path = url('/images/category-images'.'/'.$image_name);
-            }
+            //     $image_path = url('/images/category-images'.'/'.$image_name);
+            // }
             $category = Category::create([
                 'name' => $request->name,
-                'image' =>  $image_path
+                // 'image' =>  $image_path
+                'image' => $request->icon
             ]);
             if($category){
                 return response()->json([
