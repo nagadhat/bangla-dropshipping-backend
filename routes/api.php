@@ -22,6 +22,7 @@ use App\Http\Controllers\CategoryController;
 */
 Route::post('register', [RegisterController::class, 'register']);
 Route::post('login', [RegisterController::class, 'login']);
+Route::get('categories', [CategoryController::class, 'index']);
 
 Route::middleware('auth:api')->group( function () {
     // Order routes
@@ -32,11 +33,15 @@ Route::middleware('auth:api')->group( function () {
     Route::delete('orders/{id}', [OrderController::class, 'delete']);
 
     // Category routes
-  
     Route::post('add/category', [CategoryController::class, 'store']);
+    Route::put('update/category/{id}', [CategoryController::class, 'update']);
+    Route::delete('delete/category/{id}', [CategoryController::class, 'delete']);
 
     // Product routes
     Route::get('products', [ProductController::class, 'index']);
     Route::post('products', [ProductController::class, 'store']);
 });
-Route::get('categories', [CategoryController::class, 'index']);
+
+
+
+
