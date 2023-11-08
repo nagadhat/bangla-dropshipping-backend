@@ -6,19 +6,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\SubCategory;
 
-class Category extends Model
+class ChildCategory extends Model
 {
     use HasFactory;
 
-    protected $table = 'categories';
+    protected $table = 'child_categories';
 
     protected $guarded = ['id'];
 
     public function sub_category(){
-        return $this->hasMany(SubCategory::class);
+        return $this->belongsTo(SubCategory::class);
     }
-
-    public function child_categories(){
-        return $this->hasManyThrough(ChildCategory::class, SubCategory::class);
-    }
+    
 }
