@@ -41,7 +41,7 @@ Route::middleware('auth:api')->group( function () {
     Route::delete('delete/category/{id}', [CategoryController::class, 'delete']);
 
     // Sub-Category routes
-    Route::get('sub-categories/{id}', [SubCategoryController::class, 'index']);
+    Route::get('sub-categories', [SubCategoryController::class, 'index']);
     Route::post('add/sub-category', [SubCategoryController::class, 'store']);
     Route::put('update/sub-category/{id}', [SubCategoryController::class, 'update']);
     Route::delete('delete/sub-category/{id}', [SubCategoryController::class, 'delete']);

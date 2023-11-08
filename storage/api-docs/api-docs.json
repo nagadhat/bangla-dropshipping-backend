@@ -8,7 +8,7 @@
         "api/categories": {
             "get": {
                 "tags": [
-                    "Category list"
+                    "Fetch Category"
                 ],
                 "summary": "list of Categories",
                 "description": "Returns list of categories",
@@ -34,11 +34,11 @@
         "/api/add/category": {
             "post": {
                 "tags": [
-                    "Category"
+                    "Add Category"
                 ],
                 "summary": "Category Add",
                 "description": "Adding new category here",
-                "operationId": "Stor Category",
+                "operationId": "Store Category",
                 "requestBody": {
                     "content": {
                         "multipart/form-data": {
@@ -92,6 +92,205 @@
                     },
                     "404": {
                         "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/update/category/{id}": {
+            "put": {
+                "tags": [
+                    "Update Category"
+                ],
+                "summary": "Category update",
+                "description": "Updating category fields here",
+                "operationId": "update Category",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "name"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "text"
+                                    },
+                                    "icon": {
+                                        "type": "file"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        },
+                        "application/json": {
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Category Updated Successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Category Updated Successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/delete/category/{id}": {
+            "delete": {
+                "tags": [
+                    "Delete Category"
+                ],
+                "summary": "Category deleted",
+                "description": "Delete record according to id from category table",
+                "operationId": "Delete Category",
+                "responses": {
+                    "201": {
+                        "description": "Category Deleted Successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Category Deleted Successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/add/child-category": {
+            "post": {
+                "tags": [
+                    "Add Child-Category"
+                ],
+                "summary": "Child-Category Add",
+                "description": "Adding child-category according to sub-category",
+                "operationId": "Store Child-Category",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "child_category_name",
+                                    "sub_category_id"
+                                ],
+                                "properties": {
+                                    "sub_category_id": {
+                                        "type": "text"
+                                    },
+                                    "child_category_name": {
+                                        "type": "text"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        },
+                        "application/json": {
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Sub-Category Inserted Successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Sub-Category Inserted Successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "api/get-all-categories": {
+            "get": {
+                "tags": [
+                    "Fetch categories with their sub-categories and child categories"
+                ],
+                "summary": "list of all Categories",
+                "description": "Returns list of categories with their sub-categories and child categories",
+                "operationId": "get-all-categories",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     }
                 }
             }
@@ -302,6 +501,98 @@
                     },
                     "200": {
                         "description": "Login Successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "api/sub-categories": {
+            "get": {
+                "tags": [
+                    "Fetch Sub-Category"
+                ],
+                "summary": "list of Sub-Categories",
+                "description": "Returns list of sub-categories",
+                "operationId": "Sub-Category-index",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/api/add/sub-category": {
+            "post": {
+                "tags": [
+                    "Add Sub-Category"
+                ],
+                "summary": "Sub-Category Add",
+                "description": "Adding sub-category according to category",
+                "operationId": "Store Sub-Category",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "sub_category_name",
+                                    "category_id"
+                                ],
+                                "properties": {
+                                    "category_id": {
+                                        "type": "text"
+                                    },
+                                    "sub_category_name": {
+                                        "type": "text"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        },
+                        "application/json": {
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Sub-Category Inserted Successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Sub-Category Inserted Successfully",
                         "content": {
                             "application/json": {
                                 "schema": {}

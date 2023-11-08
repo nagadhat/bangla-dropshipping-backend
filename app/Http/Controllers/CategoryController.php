@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\SubCategory;
-
 use Validator;
 use File;
 
@@ -15,7 +14,7 @@ class CategoryController extends Controller
      * @OA\Get(
      *      path="api/categories",
      *      operationId="Category-index",
-     *      tags={"Category list"},
+     *      tags={"Fetch Category"},
      *      summary="list of Categories",
      *      description="Returns list of categories",
      *      @OA\Response(
@@ -50,8 +49,8 @@ class CategoryController extends Controller
     /**
     * @OA\Post(
     * path="/api/add/category",
-    * operationId="Stor Category",
-    * tags={"Category"},
+    * operationId="Store Category",
+    * tags={"Add Category"},
     * summary="Category Add",
     * description="Adding new category here",
     *     @OA\RequestBody(
@@ -127,6 +126,45 @@ class CategoryController extends Controller
         }
     }
 
+     /**
+    * @OA\Put(
+    * path="/api/update/category/{id}",
+    * operationId="update Category",
+    * tags={"Update Category"},
+    * summary="Category update",
+    * description="Updating category fields here",
+    *     @OA\RequestBody(
+    *         @OA\JsonContent(),
+    *         @OA\MediaType(
+    *            mediaType="multipart/form-data",
+    *            @OA\Schema(
+    *               type="object",
+    *               required={"name"},
+    *               @OA\Property(property="name", type="text"),
+    *               @OA\Property(property="icon", type="file"),
+    *            ),
+    *        ),
+    *    ),
+    *      @OA\Response(
+    *          response=201,
+    *          description="Category Updated Successfully",
+    *          @OA\JsonContent()
+    *       ),
+    *      @OA\Response(
+    *          response=200,
+    *          description="Category Updated Successfully",
+    *          @OA\JsonContent()
+    *       ),
+    *      @OA\Response(
+    *          response=422,
+    *          description="Unprocessable Entity",
+    *          @OA\JsonContent()
+    *       ),
+    *      @OA\Response(response=400, description="Bad request"),
+    *      @OA\Response(response=404, description="Resource Not Found"),
+    * )
+    */
+
     public function update(Request $request, $id){
 
         $category = Category::where('id', $id)->first();
@@ -179,6 +217,34 @@ class CategoryController extends Controller
             }
         }
     }
+
+     /**
+    * @OA\Delete(
+    * path="/api/delete/category/{id}",
+    * operationId="Delete Category",
+    * tags={"Delete Category"},
+    * summary="Category deleted",
+    * description="Delete record according to id from category table",
+    *      @OA\Response(
+    *          response=201,
+    *          description="Category Deleted Successfully",
+    *          @OA\JsonContent()
+    *       ),
+    *      @OA\Response(
+    *          response=200,
+    *          description="Category Deleted Successfully",
+    *          @OA\JsonContent()
+    *       ),
+    *      @OA\Response(
+    *          response=422,
+    *          description="Unprocessable Entity",
+    *          @OA\JsonContent()
+    *       ),
+    *      @OA\Response(response=400, description="Bad request"),
+    *      @OA\Response(response=404, description="Resource Not Found"),
+    * )
+    */
+
     public function delete($id){
         $category = Category::where('id', $id)->first();
 
