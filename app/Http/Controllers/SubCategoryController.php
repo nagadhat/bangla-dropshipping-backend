@@ -27,7 +27,7 @@ class SubCategoryController extends Controller
 
         $validation = Validator::make($request->all(), [
             'category_id' => 'required',
-            'category_name' => 'required',
+            'sub_category_name' => 'required',
         ]);
         if($validation->fails()){
             return response()->json([
@@ -37,7 +37,7 @@ class SubCategoryController extends Controller
 
             $sub_category = SubCategory::create([
                 'category_id' => $request->category_id,
-                'name' => $request->category_name
+                'name' => $request->sub_category_name
             ]);
             if($sub_category){
                 return response()->json([
