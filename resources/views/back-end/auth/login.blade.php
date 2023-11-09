@@ -21,17 +21,17 @@
                                 <h4 class="text-uppercase mt-0">Sign In</h4>
                             </div>
 
-                            <form action="#">
-
+                            <form action="{{ route('auth_login') }}" method="post" enctype="multipart/formdata">
+                                @csrf
                                 <div class="form-group mb-3">
                                     <label for="emailaddress">Email address</label>
-                                    <input class="form-control" type="email" id="emailaddress" required=""
+                                    <input class="form-control" name="email" type="email" id="emailaddress" required=""
                                         placeholder="Enter your email">
                                 </div>
 
                                 <div class="form-group mb-3">
                                     <label for="password">Password</label>
-                                    <input class="form-control" type="password" required="" id="password"
+                                    <input class="form-control" name="password" type="password" required="" id="password"
                                         placeholder="Enter your password">
                                 </div>
 

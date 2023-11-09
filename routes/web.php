@@ -2,8 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Auth\AuthController;
+
 
 
 /*
@@ -17,9 +18,25 @@ use App\Http\Controllers\Auth\AuthController;
 |
 */
 
-// route for admin dashboard 
-Route::get('/admin-dashboard', [DashboardController::class, 'index'])->name('admin_dashboard');
-
 // route for authintication
-Route::get('/', [AuthController::class, 'authLogin'])->name('auth_login');
-Route::get('/registration', [AuthController::class, 'authRegistration'])->name('auth_registration');
+
+    Route::match(['get', 'post'], '/', [AuthController::class, 'authLogin'])->middleware('guest')->name('auth_login');
+    Route::get('/registration', [AuthController::class, 'authRegistration'])->name('auth_registration');
+
+   
+Route::group(['middleware' => 'disable'], function(){
+    Route::group(['middleware' => 'auth'], function(){
+        Route::get('/admin-dashboard', [DashboardController::class, 'index'])->name('admin_dashboard');
+        Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
+    });
+});
+
+
+// route for admin dashboard 
+// Route::group([ 'middleware' => 'auth'], function() {
+//     Route::get('/admin-dashboard', [DashboardController::class, 'index'])->middleware('disable')->name('admin_dashboard');
+//     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+// });
+
+
