@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\SubCategory;
@@ -10,7 +11,7 @@ use File;
 
 class CategoryController extends Controller
 {
-    /**
+     /**
      * @OA\Get(
      *      path="api/categories",
      *      operationId="Category-index",

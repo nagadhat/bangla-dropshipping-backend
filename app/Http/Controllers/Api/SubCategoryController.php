@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\SubCategory;
 use App\Models\Category;
@@ -9,8 +10,7 @@ use Validator;
 
 class SubCategoryController extends Controller
 {
-
-    /**
+     /**
      * @OA\Get(
      *      path="api/sub-categories",
      *      operationId="Sub-Category-index",
