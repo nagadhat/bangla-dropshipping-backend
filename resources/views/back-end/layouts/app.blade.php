@@ -17,6 +17,10 @@
     <link href="{{asset('back-end/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
     <!-- App Css-->
     <link href="{{ asset('back-end/assets/css/app.min.css') }}" id="app-stylesheet" rel="stylesheet" type="text/css" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    
+    <link href="//cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css" id="app-stylesheet" rel="stylesheet" type="text/css" />
+
     @yield('styles')
 
 </head>
@@ -31,6 +35,8 @@
     </div>
     <!-- END wrapper -->
 
+    <script src="//cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    
     <!-- Vendor js -->
     <script src="{{asset('back-end/assets/js/vendor.min.js')}}"></script>
 

@@ -10,49 +10,36 @@
                     class="rounded-circle img-thumbnail avatar-md">
                 <div class="dropdown">
                     <a href="#" class="user-name dropdown-toggle h5 mt-2 mb-1 d-block"
-                        data-toggle="dropdown" aria-expanded="false">Nowak Helme</a>
+                        data-toggle="dropdown" aria-expanded="false">{{ auth()->user()->name }}</a>
                     <div class="dropdown-menu user-pro-dropdown">
 
                         <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                        <!-- <a href="javascript:void(0);" class="dropdown-item notify-item">
                             <i class="fe-user mr-1"></i>
                             <span>My Account</span>
-                        </a>
+                        </a> -->
 
                         <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                        <!-- <a href="javascript:void(0);" class="dropdown-item notify-item">
                             <i class="fe-settings mr-1"></i>
                             <span>Settings</span>
-                        </a>
+                        </a> -->
 
                         <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                        <!-- <a href="javascript:void(0);" class="dropdown-item notify-item">
                             <i class="fe-lock mr-1"></i>
                             <span>Lock Screen</span>
-                        </a>
+                        </a> -->
 
                         <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                        <!-- <a href="javascript:void(0);" class="dropdown-item notify-item">
                             <i class="fe-log-out mr-1"></i>
                             <span>Logout</span>
-                        </a>
+                        </a> -->
 
                     </div>
                 </div>
-                <p class="text-muted">Admin Head</p>
-                <ul class="list-inline">
-                    <li class="list-inline-item">
-                        <a href="#" class="text-muted">
-                            <i class="mdi mdi-cog"></i>
-                        </a>
-                    </li>
-
-                    <li class="list-inline-item">
-                        <a href="#">
-                            <i class="mdi mdi-power"></i>
-                        </a>
-                    </li>
-                </ul>
+                
             </div>
 
             <!--- Sidemenu -->
@@ -63,12 +50,78 @@
                     <li class="menu-title">Navigation</li>
 
                     <li>
-                        <a href="index.html">
+                        <a href="{{ route('admin_dashboard') }}">
                             <i class="mdi mdi-view-dashboard"></i>
                             <span> Dashboard </span>
                         </a>
                     </li>
 
+                    <li>
+                        <a href="javascript: void(0);">
+                            <i class="mdi mdi-page-layout-sidebar-left"></i>
+                            <span> Category </span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <ul class="nav-second-level" aria-expanded="false">
+                            <li>
+                                <a href="{{ route('add_category') }}">
+                                <i class="mdi mdi-texture"></i>
+                                    <span>Add Category</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('get_categories') }}">
+                                <i class="mdi mdi-view-list"></i>
+                                    <span>Manage Category</span>
+                                </a>
+                            </li>
+                            
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript: void(0);">
+                            <i class="mdi mdi-page-layout-sidebar-left"></i>
+                            <span> Sub Category </span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <ul class="nav-second-level" aria-expanded="false">
+                            <li>
+                                <a href="{{ route('add_sub_category') }}">
+                                <i class="mdi mdi-texture"></i>
+                                    <span>Create Sub-Category</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('get_sub_categories') }}">
+                                <i class="mdi mdi-view-list"></i>
+                                    <span>Manage Sub-Category</span>
+                                </a>
+                            </li>
+                            
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript: void(0);">
+                            <i class="mdi mdi-page-layout-sidebar-left"></i>
+                            <span> Child Category </span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <ul class="nav-second-level" aria-expanded="false">
+                            <li>
+                                <a href="{{ route('add_child_category') }}">
+                                <i class="mdi mdi-texture"></i>
+                                    <span>Add Child-Category</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('get_child_categories') }}">
+                                <i class="mdi mdi-view-list"></i>
+                                    <span>Manage Child-Category</span>
+                                </a>
+                            </li>
+                            
+                        </ul>
+                    </li>
                     <li>
                         <a href="javascript: void(0);">
                             <i class="mdi mdi-page-layout-sidebar-left"></i>
