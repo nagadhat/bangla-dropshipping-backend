@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\SubCategory;
 use App\Models\ChildCategory;
+use App\Models\Product;
 
 class HomeController extends Controller
 {
@@ -39,6 +40,24 @@ class HomeController extends Controller
         if($category){
             return response()->json([
                 'category' => $category,
+    
+            ]);
+        }else{
+            return response()->json([
+                'error' => 'Something went wrong',
+    
+            ]);
+        }
+        
+    }
+
+    public function get_all_products(){
+
+        $product = Product::with('category')->get();
+
+        if($product){
+            return response()->json([
+                'product' => $product,
     
             ]);
         }else{

@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Admin\ChildCategoryController;
+use App\Http\Controllers\Admin\ProductController;
 
 
 
@@ -39,12 +40,19 @@ Route::group(['middleware' => 'disable'], function(){
         // route for sub-category
         Route::match(['get', 'post'], '/add/sub-category', [SubCategoryController::class, 'store'])->name('add_sub_category');
         Route::get('/sub-categories', [SubCategoryController::class, 'index'])->name('get_sub_categories');
+        
 
-         // route for child-category
+        // route for child-category
          Route::match(['get', 'post'], '/add/child-category', [ChildCategoryController::class, 'store'])->name('add_child_category');
          Route::get('/child-categories', [ChildCategoryController::class, 'index'])->name('get_child_categories');
 
-        Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+        // route for product
+         Route::match(['get', 'post'], '/add/product', [ProductController::class, 'store'])->name('add_product');
+         Route::get('/products', [ProductController::class, 'index'])->name('get_products');
+         Route::post('/get-sub-category', [ProductController::class, 'get_sub_category']);
+         Route::post('/get-child-category', [ProductController::class, 'get_child_category']);
+        
+         Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 
     });

@@ -24,6 +24,7 @@ use App\Http\Controllers\Api\HomeController;
 Route::post('register', [RegisterController::class, 'register']);
 Route::post('login', [RegisterController::class, 'login']);
 Route::get('get-all-categories', [HomeController::class, 'get_all_categories']);
+Route::get('get-all-products', [HomeController::class, 'get_all_products']);
 
 
 Route::middleware('auth:api')->group( function () {
@@ -52,8 +53,7 @@ Route::middleware('auth:api')->group( function () {
     Route::delete('delete/child-category/{id}', [ChildCategoryController::class, 'delete']);
 
     // Product routes
-    Route::get('products', [ProductController::class, 'index']);
-    Route::post('products', [ProductController::class, 'store']);
+    // Route::post('add/products', [ProductController::class, 'store']);
 });
 
 

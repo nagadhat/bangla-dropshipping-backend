@@ -125,6 +125,28 @@
                     <li>
                         <a href="javascript: void(0);">
                             <i class="mdi mdi-page-layout-sidebar-left"></i>
+                            <span> Product </span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <ul class="nav-second-level" aria-expanded="false">
+                            <li>
+                                <a href="{{ route('add_product') }}">
+                                <i class="mdi mdi-texture"></i>
+                                    <span>Add Product</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('get_products') }}">
+                                <i class="mdi mdi-view-list"></i>
+                                    <span>Manage Product</span>
+                                </a>
+                            </li>
+                            
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript: void(0);">
+                            <i class="mdi mdi-page-layout-sidebar-left"></i>
                             <span> Layouts </span>
                             <span class="menu-arrow"></span>
                         </a>
