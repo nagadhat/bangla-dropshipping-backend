@@ -50,12 +50,9 @@ class ProductController extends Controller
         }
     }
     public function get_all_products(){
-        // $products = Product::all();
-
-        return response()->json([
-            
-            // 'data' => $products
-            'data' => 'hello world'
+        $products = Product::all();
+        return response()->json([        
+            'data' => $products          
         ]);
     }
 }

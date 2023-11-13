@@ -65,8 +65,8 @@
                                 <div class="form-group mb-3">
                                     <label for="" class="form-label">Photo</label>
                                     <div class="row align-items-center">
-                                        <div class="col">
-                                            <input type="file" name="images" id="selectImage" class="form-control">
+                                        <div class="">
+                                            <input type="file" name="images[]" id="selectImage" class="form-control" multiple>
                                         </div>
                                     </div>
                                     <img id="preview" src="#" alt="your image" class="mt-3" style="display:none;height:100px;width:100px;"/>
