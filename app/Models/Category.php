@@ -21,4 +21,8 @@ class Category extends Model
     public function child_categories(){
         return $this->hasManyThrough(ChildCategory::class, SubCategory::class);
     }
+
+    public function products(){
+        return $this->hasMany(Product::class);
+    }
 }

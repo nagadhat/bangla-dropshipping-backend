@@ -10,13 +10,6 @@ use Validator;
 class ProductController extends Controller
 {
     public function index(){
-        
-        $products = Product::all();
-
-        return response()->json([
-            
-            'data' => $products
-        ]);
     }
     public function store(Request $request){
 
@@ -55,5 +48,14 @@ class ProductController extends Controller
                 ]);
             }
         }
+    }
+    public function get_all_products(){
+        // $products = Product::all();
+
+        return response()->json([
+            
+            // 'data' => $products
+            'data' => 'hello world'
+        ]);
     }
 }
