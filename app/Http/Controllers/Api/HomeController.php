@@ -68,4 +68,11 @@ class HomeController extends Controller
         }
         
     }
+    public function get_product($id){
+
+        $product = Product::find($id);
+        return response()->json([        
+            'data' => $products          
+        ]);
+    }
 }

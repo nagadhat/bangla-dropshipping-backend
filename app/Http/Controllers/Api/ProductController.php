@@ -55,11 +55,5 @@ class ProductController extends Controller
             'data' => $products          
         ]);
     }
-    public function get_product($id){
-
-        $product = Product::find($id);
-        return response()->json([        
-            'data' => $products          
-        ]);
-    }
+   
 }
