@@ -72,7 +72,7 @@ class HomeController extends Controller
 
         $product = Product::find($id);
         return response()->json([        
-            'data' => $products          
+            'data' => $product          
         ]);
     }
 }
