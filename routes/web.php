@@ -59,10 +59,4 @@ Route::group(['middleware' => 'disable'], function(){
 });
 
 
-// route for admin dashboard 
-// Route::group([ 'middleware' => 'auth'], function() {
-//     Route::get('/admin-dashboard', [DashboardController::class, 'index'])->middleware('disable')->name('admin_dashboard');
-//     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
-// });
-
 
