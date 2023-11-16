@@ -37,13 +37,13 @@ Route::group(['middleware' => 'disable'], function(){
         // route for category
         Route::match(['get', 'post'], '/add/category', [CategoryController::class, 'store'])->name('add_category');
         Route::get('/categories', [CategoryController::class, 'index'])->name('get_categories');
-        Route::match(['get', 'post'], '/edit-category/{id}', [CategoryController::class, 'edit_category'])->name('edit_category');
+        Route::match(['get', 'post'], '/edit/category/{id}', [CategoryController::class, 'update'])->name('edit_category');
         Route::get('/delete/category/{id}', [CategoryController::class, 'delete'])->name('delete_category');
 
         // route for sub-category
         Route::match(['get', 'post'], '/add/sub-category', [SubCategoryController::class, 'store'])->name('add_sub_category');
         Route::get('/sub-categories', [SubCategoryController::class, 'index'])->name('get_sub_categories');
-        Route::match(['get', 'post'], '/edit/category/{id}', [SubCategoryController::class, 'update'])->name('edit_sub_category');
+        Route::match(['get', 'post'], '/edit/sub-category/{id}', [SubCategoryController::class, 'update'])->name('edit_sub_category');
         Route::get('/delete/sub-category/{id}', [SubCategoryController::class, 'delete'])->name('delete_sub_category');
 
         // route for child-category
@@ -53,8 +53,7 @@ Route::group(['middleware' => 'disable'], function(){
          // route for slider
          Route::match(['get', 'post'], '/add/slider', [SliderController::class, 'store'])->name('add_slider');
          Route::get('/sliders', [SliderController::class, 'index'])->name('get_sliders');
-         Route::post('/get-sub-category', [SliderController::class, 'get_sub_category']);
-         Route::post('/get-child-category', [SliderController::class, 'get_child_category']);
+         
 
         // route for product
          Route::match(['get', 'post'], '/add/product', [ProductController::class, 'store'])->name('add_product');

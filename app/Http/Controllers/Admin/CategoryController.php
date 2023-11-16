@@ -58,7 +58,7 @@ class CategoryController extends Controller
         }
     }
     public function update(Request $request,$id){
-
+        // return $id;
         $category = Category::where('id', $id)->first();
 
         if ($request->isMethod('POST')){
@@ -116,6 +116,7 @@ class CategoryController extends Controller
         }
     }
     public function delete($id){
+    
         $category = Category::where('id', $id)->first();
 
         if($category){
