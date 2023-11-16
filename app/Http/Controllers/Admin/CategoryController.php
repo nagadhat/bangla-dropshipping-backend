@@ -57,4 +57,83 @@ class CategoryController extends Controller
             return view('back-end.category.create_category');
         }
     }
+    public function update(Request $request,$id){
+
+        $category = Category::where('id', $id)->first();
+
+        if ($request->isMethod('POST')){
+            // return $request->all();
+            $validation = Validator::make( $request->all(), [
+                'name' => 'required|max:150',
+                'icon' => 'nullable|mimes:png,jpg,jpeg,svg',
+                'priority' => 'required'
+            ]); 
+    
+            if($validation->fails()){
+                return response()->json([
+                    'error' => $validation->massages(),
+                ]);
+    
+            }else{
+                $image = $request->file('icon');
+                // upload image to folder
+                if( $request->has('icon')){
+                    $image_name = time().rand().'.'. $image->getClientOriginalExtension();
+                    $image_folder = public_path('/images/category-images');
+                    $image->move($image_folder, $image_name);
+    
+                    // delete old image from folder
+                    $image_old = pathinfo($category->image, PATHINFO_BASENAME);
+                    $image_old_path = public_path('/images/category-images'.'/'.$image_old);
+                    if(File::exists($image_old_path)){
+                        File::delete($image_old_path);
+                    }
+                    // end of delete old image from folder
+    
+                    $image_path = url('/images/category-images'.'/'.$image_name);
+                }
+                // end of image upload to folder
+    
+                $category -> update([
+                    'name' => $request->name,
+                    'image' => $image_path,
+                    'priority' => $request->priority,
+                ]);      
+    
+                if($category){
+
+                    return redirect()->route('get_categories')->with('message', 'Category Updated Successfully');
+                    
+                }else{
+                    return redirect()->route('get_categories')->with('message', 'Something went wrong');
+
+                }
+            }
+
+        }else{
+            // return $id;
+            return view('back-end.category.edit_category', compact('category'));
+        }
+    }
+    public function delete($id){
+        $category = Category::where('id', $id)->first();
+
+        if($category){
+            $category->delete();
+
+             // delete old image from folder
+             $image_old = pathinfo($category->image, PATHINFO_BASENAME);
+             $image_old_path = public_path('/images/category-images'.'/'.$image_old);
+             if(File::exists($image_old_path)){
+                 File::delete($image_old_path);
+             }
+             // end of delete old image from folder
+
+            return redirect()->route('get_categories')->with('message', 'Category deleted successfully');
+        }else{
+            return redirect()->route('get_categories')->with('message', 'Something went wrong');
+
+        }
+
+    }
 }

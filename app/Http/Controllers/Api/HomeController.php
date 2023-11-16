@@ -75,4 +75,20 @@ class HomeController extends Controller
             'data' => $product          
         ]);
     }
+    public function get_sliders(){
+
+        $slider = Slider::orderBy('id', 'DESC')->get();
+
+        if($slider){
+            return response()->json([
+                'slider' => $slider,
+    
+            ]);
+        }else{
+            return response()->json([
+                'error' => 'Something went wrong',
+    
+            ]);
+        }
+    }
 }
