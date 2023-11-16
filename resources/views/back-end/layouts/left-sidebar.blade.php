@@ -147,6 +147,28 @@
                     <li>
                         <a href="javascript: void(0);">
                             <i class="mdi mdi-page-layout-sidebar-left"></i>
+                            <span> Slider </span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <ul class="nav-second-level" aria-expanded="false">
+                            <li>
+                                <a href="{{ route('add_slider') }}">
+                                <i class="mdi mdi-texture"></i>
+                                    <span>Add Slider</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('get_sliders') }}">
+                                <i class="mdi mdi-view-list"></i>
+                                    <span>Manage Slider</span>
+                                </a>
+                            </li>
+                            
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript: void(0);">
+                            <i class="mdi mdi-page-layout-sidebar-left"></i>
                             <span> Layouts </span>
                             <span class="menu-arrow"></span>
                         </a>

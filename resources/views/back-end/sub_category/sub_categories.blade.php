@@ -43,8 +43,8 @@
                                         <td>{{ $sub_category->name }}</td>
                                         <td>{{ $sub_category->category->name }}</td>
                                         <td>
-                                            <button class="btn btn-primary">Edit</button>
-                                            <button class="btn btn-danger">Delete</button>
+                                            <a class="btn btn-primary" href="{{ route('edit_sub_category',['id' => $sub_category->id]) }}">Edit</a>
+                                            <a class="btn btn-danger" href="{{ route('delete_sub_category',['id' => $sub_category->id]) }}">Delete</a>
                                         </td>
                                         </tr>
                                     @endforeach

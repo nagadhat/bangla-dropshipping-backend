@@ -23,40 +23,38 @@
                 <div class="col-12 pt-3">
                 <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Category List</h3>
-                            <a href="{{ route('add_category') }}" class="btn btn-primary">Add new</a>
+                            <h3 class="card-title">Slider List</h3>
+                            <a href="{{ route('add_slider') }}" class="btn btn-primary">Add new</a>
                         </div>
                         <div class="card-body">
-                            <table id="category_table" class="table">
+                            <table id="sub_category_table" class="table">
                                 <thead>
                                     <tr>
                                     <th scope="col">Serial No</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">Image</th>
-                                    <th scope="col">Priority</th>
+                                    <th scope="col">Status</th>
                                     <th scope="col">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($categories as $category)
+                                    @foreach($sliders as $slide)
                                         <tr>
                                         <th scope="row">{{ $loop->iteration }}</th>
-                                        <td>{{ $category->name }}</td>
+                                        <td>{{ $slide->title }}</td>
                                         <td>
-                                            <img src="{{ $category->image }}" height="50" width="50" alt="">
+                                            <img src="{{ $slide->image }}" height="50px" width="50px" alt="">
                                         </td>
                                         <td>
-                                            @if ($category->priority == 'high')
-                                                <span class="badge bg-success">High</span>   
-                                            @elseif($category->priority == 'medium')
-                                                <span class="badge bg-warning">Medium</span>
-                                            @else
-                                                <span class="badge bg-danger">Low</span>
+                                            @if( $slide->status == 1 )
+                                                <span class="btn btn-success">Active</span>
+                                            @else  
+                                                <span class="btn btn-danger">Inactive</span> 
                                             @endif
                                         </td>
                                         <td>
-                                            <a href="{{ route('edit_category', ['id' => $category->id]) }}" class="btn btn-primary">Edit</a>
-                                            <a href="{{ route('delete_category', ['id' => $category->id]) }}" class="btn btn-danger">Delete</a>
+                                            <a class="btn btn-primary" href="">Edit</a>
+                                            <a class="btn btn-danger" href="">Delete</a>
                                         </td>
                                         </tr>
                                     @endforeach
@@ -71,7 +69,7 @@
     <script>
         $(document).ready(function() {
             
-            let table = new DataTable('#category_table', {
+            let table = new DataTable('#sub_category_table', {
                 responsive: true
             });
         })
