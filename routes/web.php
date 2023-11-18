@@ -23,7 +23,7 @@ use App\Http\Controllers\Admin\SliderController;
 |
 */
 
-// route for authintication
+// route for admin authintication
 Route::match(['get', 'post'], '/', [AuthController::class, 'authLogin'])->name('auth_login')->middleware('guest');
 Route::get('/registration', [AuthController::class, 'authRegistration'])->name('auth_registration');
 
@@ -62,7 +62,6 @@ Route::group(['middleware' => 'disable'], function(){
          Route::post('/get-child-category', [ProductController::class, 'get_child_category']);
         
          Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
-
 
     });
 });
