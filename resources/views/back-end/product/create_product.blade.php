@@ -90,11 +90,30 @@
                                         <div class="row justify-content-center">
                                             <div class="col-4">
                                                 <label for="" class="form-label">Size</label>
-                                                <input type="text" name="size" id="" class="form-control">
+                                                <div class="col-12 addSize">
+                                                    <div class="row justify-content-center">
+                                                        <div class="col-10">
+                                                            <input type="text" name="size[]" id="sizeField" class="form-control">
+                                                        </div>
+                                                        <div class="col-2 me-2">
+                                                            <button class="btn btn-success" id="addSizeInput">+</button>
+                                                        </div>
+                                                    </div>       
+                                                </div>
                                             </div>
                                             <div class="col-4">
                                                 <label for="" class="form-label">Colour</label>
-                                                <input type="text" name="colour" id="" class="form-control">
+                                                <div class="col-12 addColour">
+                                                    <div class="row justify-content-center">
+                                                        <div class="col-10">
+                                                            <input type="text" name="colour[]" id="" class="form-control">
+                                                        </div>
+                                                        <div class="col-2 me-2">
+                                                            <button class="btn btn-success" id="addColourInput">+</button>
+                                                        </div>
+                                                    </div>       
+                                                </div>
+                                                
                                             </div>
                                             <div class="col-4">
                                                 <label for="" class="form-label">Quantity</label>
@@ -171,6 +190,44 @@
                         });
                 },
             });
+        });
+
+        $("#addSizeInput").click(function(e){
+            e.preventDefault();
+            $(".addSize").append(` <div class="row justify-content-center py-2">
+                                        <div class="col-10">
+                                            <input type="text" name="size[]" id="sizeField" class="form-control">
+                                        </div>
+                                        <div class="col-2">
+                                            <button class="btn btn-danger" id="sizeRemovebtn">-</button>
+                                        </div>
+                                    </div> `);
+        });
+
+        $(document).on('click','#sizeRemovebtn', function(e){
+            e.preventDefault();
+            $(this).parent().parent().remove();
+            // $(rowItem).remove();
+
+        });
+
+        $("#addColourInput").click(function(e){
+            e.preventDefault();
+            $(".addColour").append(` <div class="row justify-content-center py-2">
+                                        <div class="col-10">
+                                            <input type="text" name="colour[]" id="" class="form-control">
+                                        </div>
+                                        <div class="col-2">
+                                            <button class="btn btn-danger" id="colourRemovebtn">-</button>
+                                        </div>
+                                    </div> `);
+        });
+
+        $(document).on('click','#colourRemovebtn', function(e){
+            e.preventDefault();
+            $(this).parent().parent().remove();
+            // $(rowItem).remove();
+
         });
     </script>
 @endsection

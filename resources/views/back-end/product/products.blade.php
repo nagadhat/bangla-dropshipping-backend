@@ -43,6 +43,7 @@
                                         <td>{{ $product->name }}</td>
                                         <td>
                                             <img src="{{ $product->image }}" height="50" width="50" alt="">
+                                           
                                         </td>
                                         
                                         <td>

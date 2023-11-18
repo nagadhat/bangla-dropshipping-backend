@@ -19,9 +19,10 @@ class ProductController extends Controller
     }
 
     public function store(Request $request){
-
+        
         // check method
         if ($request->isMethod('POST')) {
+           
             // dd($request->file('images'));
             // return $request->all();
             // validation
@@ -63,16 +64,16 @@ class ProductController extends Controller
                 }
                 $product = Product::create([
                     'category_id' =>  $request->category_id,
-                    'sub_category_id' =>$request->sub_category_id,
+                    'sub_category_id' => $request->sub_category_id,
                     'child_category_id' => $request->child_category_id,
                     'name' => $request->name,
                     'description' =>  $request->description,
                     'image' => implode(',', $image),
                     'price' => $request->price,
                     'discoutPrice' =>  $request->discountPrice,
-                    'colour' =>$request->colour,
-                    'size' =>$request->size,
-                    'quantity' =>$request->quantity
+                    'colour' => json_encode($request->colour),
+                    'size' => json_encode($request->size),
+                    'quantity' => $request->quantity
                 
                 ]);
                 // return $product;

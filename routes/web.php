@@ -24,7 +24,7 @@ use App\Http\Controllers\Admin\SliderController;
 */
 
 // route for authintication
-Route::match(['get', 'post'], '/', [AuthController::class, 'authLogin'])->middleware('guest')->name('auth_login');
+Route::match(['get', 'post'], '/', [AuthController::class, 'authLogin'])->name('auth_login')->middleware('guest');
 Route::get('/registration', [AuthController::class, 'authRegistration'])->name('auth_registration');
 
    
