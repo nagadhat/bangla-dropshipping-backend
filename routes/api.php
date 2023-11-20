@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\SubCategoryController;
 use App\Http\Controllers\Api\ChildCategoryController;
 use App\Http\Controllers\Api\HomeController;
+use App\Http\Controllers\Api\AuthController;
 
 
 /*
@@ -21,13 +22,15 @@ use App\Http\Controllers\Api\HomeController;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-Route::post('register', [RegisterController::class, 'register']);
-Route::post('login', [RegisterController::class, 'login']);
+
+// user authentication routes
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
+
 Route::get('get-all-products', [HomeController::class, 'get_all_products']);
 Route::get('get-product/{id}', [HomeController::class, 'get_product']);
 Route::get('get-all-categories', [HomeController::class, 'get_all_categories']);
 Route::get('get-sliders', [HomeController::class, 'get_sliders']);
-
 
 Route::middleware('auth:api')->group( function () {
     // Order routes

@@ -10,11 +10,8 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        if(Auth::check()){
-            return view('back-end.dashboard');
-        }else{
-            return redirect()->route('auth_login');
-        }
         
+        return view('back-end.dashboard');
+      
     }
 }
