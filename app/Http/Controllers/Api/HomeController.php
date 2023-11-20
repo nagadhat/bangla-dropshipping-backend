@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\SubCategory;
 use App\Models\ChildCategory;
 use App\Models\Product;
+use App\Models\Slider;
 
 class HomeController extends Controller
 {
