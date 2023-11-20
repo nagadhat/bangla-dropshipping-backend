@@ -11,13 +11,25 @@ use Validator;
 
 class AuthController extends Controller
 {
+    public function index(){
+        $users = User::where('role', 'user')->get();
+        return response()->json([
+            'data' => $users
+        ]);
+    }
     public function register(Request $request)
     {
+        // return  response()->json([
+        //     'data' => $request->all(),
+            
+        // ]);
 
         $validator = Validator::make($request->all(), [
             'name' => 'required|min:4',
             'email' => 'required|email',
             'password' => 'required|min:8',
+            'userName' => 'required',
+            'phone' => 'required',
         ]);
 
         if($validator->fails()){
@@ -33,6 +45,8 @@ class AuthController extends Controller
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => bcrypt($request->password),
+                'user_name' => $request->userName,
+                'phone' => $request->phone,
 
             ]);
             if($user){

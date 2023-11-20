@@ -27,6 +27,7 @@ use App\Http\Controllers\Api\AuthController;
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
+Route::get('get-users', [AuthController::class, 'index'])->name('all.users');
 Route::get('get-all-products', [HomeController::class, 'get_all_products']);
 Route::get('get-product/{id}', [HomeController::class, 'get_product']);
 Route::get('get-all-categories', [HomeController::class, 'get_all_categories']);
