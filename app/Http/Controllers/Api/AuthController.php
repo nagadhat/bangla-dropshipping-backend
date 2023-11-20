@@ -28,8 +28,8 @@ class AuthController extends Controller
             'name' => 'required|min:4',
             'email' => 'required|email',
             'password' => 'required|min:8',
-            'userName' => 'required',
-            'phone' => 'required',
+            'userName' => 'nullable',
+            'phone' => 'nullable',
         ]);
 
         if($validator->fails()){
