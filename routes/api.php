@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\SubCategoryController;
 use App\Http\Controllers\Api\ChildCategoryController;
 use App\Http\Controllers\Api\HomeController;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\ReviewController;
 
 
 /*
@@ -26,12 +27,12 @@ use App\Http\Controllers\Api\AuthController;
 // user authentication routes
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
-
 Route::get('get-users', [AuthController::class, 'index'])->name('all.users');
-Route::get('get-all-products', [HomeController::class, 'get_all_products']);
-Route::get('get-product/{id}', [HomeController::class, 'get_product']);
-Route::get('get-all-categories', [HomeController::class, 'get_all_categories']);
-Route::get('get-sliders', [HomeController::class, 'get_sliders']);
+
+Route::get('get-all-products', [ProductController::class, 'get_all_products']);
+Route::get('get-product/{id}', [ProductController::class, 'get_product']);
+Route::get('get-all-categories', [CategoryController::class, 'get_all_categories']);
+Route::get('get-sliders', [SliderController::class, 'get_sliders']);
 
 Route::middleware('auth:api')->group( function () {
     // Order routes
@@ -58,8 +59,13 @@ Route::middleware('auth:api')->group( function () {
     Route::put('update/child-category/{id}', [ChildCategoryController::class, 'update']);
     Route::delete('delete/child-category/{id}', [ChildCategoryController::class, 'delete']);
 
+    //review routes
+    Route::post('add/review', [ReviewController::class, 'store']);
+
     // Product routes
     // Route::post('add/products', [ProductController::class, 'store']);
 });
+
+
 
 

@@ -66,10 +66,11 @@
                                     <label for="" class="form-label">Photo</label>
                                     <div class="row align-items-center">
                                         <div class="">
-                                            <input type="file" name="images[]" id="selectImage" class="form-control" multiple>
+                                            <input type="file" name="images[]"  onchange="preview(this)" id="selectImage" class="form-control" multiple>
+                                            <div class="me-2"></div>
                                         </div>
                                     </div>
-                                    <img id="preview" src="#" alt="your image" class="mt-3" style="display:none;height:100px;width:100px;"/>
+                                    <!-- <img id="preview" src="#" alt="your image" class="mt-3" style="display:none;height:100px;width:100px;"/> -->
                                 </div>
                                 <div class="form-group mb-3">
                                     <div class="col-12">
@@ -133,15 +134,17 @@
         </div> <!-- content -->
     </div>
 
+    <!-- script to preview multiple image before upload -->
     <script>
-        selectImage.onchange = evt => {
-            preview = document.getElementById('preview');
-            preview.style.display = 'block';
-            const [file] = selectImage.files
-            if (file) {
-                preview.src = URL.createObjectURL(file)
-            }
-        }
+       
+        function preview(elem, output = '') {
+            Array.from(elem.files).map((file) => {
+                const blobUrl = window.URL.createObjectURL(file)
+                output+=`<img class="my-2 me-2" height="100px" width="100px" class="me-1" src=${blobUrl}>`
+            })   
+        elem.nextElementSibling.innerHTML = output
+    }
+
     </script>
 
     <script>

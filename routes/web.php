@@ -58,6 +58,8 @@ Route::group(['middleware' => 'disable'], function(){
         // route for product
          Route::match(['get', 'post'], '/add/product', [ProductController::class, 'store'])->name('add_product');
          Route::get('/products', [ProductController::class, 'index'])->name('get_products');
+         Route::match(['get', 'post'], '/edit/product/{id}', [ProductController::class, 'update'])->name('edit_product');
+        Route::get('/delete/product/{id}', [ProductController::class, 'delete'])->name('delete_product');
          Route::post('/get-sub-category', [ProductController::class, 'get_sub_category']);
          Route::post('/get-child-category', [ProductController::class, 'get_child_category']);
         

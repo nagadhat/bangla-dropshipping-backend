@@ -8,13 +8,16 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\ChildCategory;
 use App\Models\SubCategory;
+use App\Models\Image;
 use Validator;
 use File;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
     public function index(){
-        $products = Product::orderBy('id', 'DESC')->get();
+        $products = Product::with('images')->orderBy('id', 'DESC')->get();
+        // return $products;
         return view('back-end.product.products',compact('products'));
     }
 
@@ -45,39 +48,43 @@ class ProductController extends Controller
                 return redirect()->route('add_product')->with('message', $validation->messages());
                 
             }else{
-                $files = $request->file('images');
-                // upload image to folder
-                if($files){
-
-                    foreach($files as $file){
-                        $image_name = rand().'.'. $file->getClientOriginalExtension();
-                        $image_path = public_path('/images/product-images');
-                        $file->move($image_path, $image_name);
-                        $image_url = url('/images/product-images'.'/'.$image_name);
-                        $image[] =  $image_url;
-                    }
-                    // $image_name = time().rand().'.'. $image->getClientOriginalExtension();
-                    // $image_folder = public_path('/images/product-images');
-                    // $image->move($image_folder, $image_name);
-    
-                    // $image_path = url('/images/product-images'.'/'.$image_name);
-                }
+                $product_code = mt_rand(1000000000, 9999999999);
+                $slug = Str::slug($request->name, '-');
                 $product = Product::create([
                     'category_id' =>  $request->category_id,
                     'sub_category_id' => $request->sub_category_id,
                     'child_category_id' => $request->child_category_id,
                     'name' => $request->name,
                     'description' =>  $request->description,
-                    'image' => implode(',', $image),
                     'price' => $request->price,
                     'discoutPrice' =>  $request->discountPrice,
                     'colour' => json_encode($request->colour),
                     'size' => json_encode($request->size),
-                    'quantity' => $request->quantity
+                    'quantity' => $request->quantity,
+                    'product_code' => $product_code,
+                    'slug' => $slug
+
                 
                 ]);
+            }
+              
                 // return $product;
                 if($product){
+
+                    $files = $request->file('images');
+                // upload image to folder
+                    if($files){
+                        foreach($files as $file){
+                            $image_name = rand().'.'. $file->getClientOriginalExtension();
+                            $image_path = public_path('/images/product-images');
+                            $file->move($image_path, $image_name);
+                            $image_url = url('/images/product-images'.'/'.$image_name);
+                            Image::create([
+                                'product_id' => $product->id,
+                                'image' => $image_url
+                            ]);
+                        }
+
                 return redirect()->route('get_products')->with('message', 'Product Inserted Successfully');
 
                 }else{
@@ -88,6 +95,14 @@ class ProductController extends Controller
             $categories = Category::all();
             return view('back-end.product.create_product', compact('categories'));
         }
+    }
+    public function update(Request $request, $id){
+        
+    }
+    public function delete($id){
+        $product = Product::find($id);
+        $product->delete();
+        return redirect()->route('get_products')->with('message', 'Product deleted successfully');
     }
 
     public function get_sub_category(Request $request){

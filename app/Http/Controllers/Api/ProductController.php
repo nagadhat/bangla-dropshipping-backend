@@ -50,9 +50,27 @@ class ProductController extends Controller
         }
     }
     public function get_all_products(){
-        $products = Product::all();
+
+        $product = Product::with('category')->get();
+
+        if($product){
+            return response()->json([
+                'product' => $product,
+    
+            ]);
+        }else{
+            return response()->json([
+                'error' => 'Something went wrong',
+    
+            ]);
+        }
+        
+    }
+    public function get_product($id){
+
+        $product = Product::find($id);
         return response()->json([        
-            'data' => $products          
+            'data' => $product          
         ]);
     }
    
