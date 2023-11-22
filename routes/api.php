@@ -31,6 +31,10 @@ Route::get('get-users', [AuthController::class, 'index'])->name('all.users');
 
 Route::get('get-all-products', [ProductController::class, 'get_all_products']);
 Route::get('get-product/{id}', [ProductController::class, 'get_product']);
+Route::get('get-products-by-category/{slug}/{id}', [ProductController::class, 'products_by_category']);
+Route::get('get-product/{id}', [ProductController::class, 'get_product']);
+
+
 Route::get('get-all-categories', [CategoryController::class, 'get_all_categories']);
 Route::get('get-sliders', [SliderController::class, 'get_sliders']);
 

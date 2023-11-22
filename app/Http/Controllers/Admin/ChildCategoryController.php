@@ -31,9 +31,12 @@ class ChildCategoryController extends Controller
     
             }else{
 
+                $slug = Str::slug($request->name, '-');
                 $child_category = ChildCategory::create([
                     'name' => $request->name,
                     'sub_category_id' => $request->sub_category_id,
+                    'slug' => $slug
+
                 
                 ]);
                 if($child_category){

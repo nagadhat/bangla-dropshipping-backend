@@ -5,6 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\SubCategory;
+use App\Models\ChildCategory;
+use App\Models\Category;
+use App\Models\Product;
 
 class Category extends Model
 {

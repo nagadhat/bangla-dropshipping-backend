@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\SubCategory;
 use Validator;
 use File;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -40,10 +41,13 @@ class CategoryController extends Controller
     
                     $image_path = url('/images/category-images'.'/'.$image_name);
                 }
+                $slug = Str::slug($request->name, '-');
+
                 $category = Category::create([
                     'name' => $request->name,
                     'image' =>  $image_path,
-                    'priority' =>$request->priority
+                    'priority' => $request->priority,
+                    'slug' => $slug
                 
                 ]);
                 if($category){
@@ -93,7 +97,7 @@ class CategoryController extends Controller
                     $image_path = url('/images/category-images'.'/'.$image_name);
                 }
                 // end of image upload to folder
-    
+
                 $category -> update([
                     'name' => $request->name,
                     'image' => $image_path,
