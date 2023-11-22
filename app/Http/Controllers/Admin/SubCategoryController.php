@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\SubCategory;
 use Validator;
+use Illuminate\Support\Str;
 
 class SubCategoryController extends Controller
 {
@@ -29,10 +30,11 @@ class SubCategoryController extends Controller
                 return redirect()->route('add_sub_category')->with('message', 'Please Fillup Required Fields');
     
             }else{
-
+                $slug = Str::slug($request->name, '-');
                 $sub_category = SubCategory::create([
                     'name' => $request->name,
                     'category_id' => $request->category_id,
+                    'slug' => $slug
                 
                 ]);
                 if($sub_category){
@@ -83,6 +85,7 @@ class SubCategoryController extends Controller
         }
     }
     public function delete($id){
+
         $sub_category = SubCategory::where('id', $id)->first();
         if($sub_category){
             $sub_category->delete();

@@ -69,9 +69,30 @@ class ProductController extends Controller
     public function get_product($id){
 
         $product = Product::find($id);
-        return response()->json([        
-            'data' => $product          
-        ]);
+        if($product){
+            return response()->json([        
+                'data' => $product          
+            ]);
+        }else{
+            return response()->json([        
+                'massage' => 'Something went wrong'         
+            ]);
+        }
+    }
+
+    public function products_by_category($slug, $id){
+
+        $products = Product::with('category')->where('category_id', $id)->get();
+        if($products){
+            return response()->json([
+                'data' => $products
+            ]);
+        }else{
+            return response()->json([
+                'massage' => 'Something went wrong'
+            ]);
+        }
+        
     }
    
 }
