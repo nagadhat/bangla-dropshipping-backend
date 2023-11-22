@@ -82,7 +82,7 @@ class ProductController extends Controller
 
     public function products_by_category($slug, $id){
 
-        $products = Product::with('category')->where('category_id', $id)->get();
+        $products = Product::where('category_id', $id)->get();
         if($products){
             return response()->json([
                 'data' => $products
@@ -93,6 +93,34 @@ class ProductController extends Controller
             ]);
         }
         
+    }
+
+    public function products_by_subcategory($slug, $id){
+
+        $products = Product::where('sub_category_id', $id)->get();
+        if($products){
+            return response()->json([
+                'data' => $products
+            ]);
+        }else{
+            return response()->json([
+                'massage' => 'Something went wrong'
+            ]);
+        }
+    }
+
+    public function products_by_childcategory($slug, $id){
+
+            $products = Product::where('child_category_id', $id)->get();
+            if($products){
+                return response()->json([
+                    'data' => $products
+                ]);
+            }else{
+                return response()->json([
+                    'massage' => 'Something went wrong'
+                ]);
+            }
     }
    
 }
