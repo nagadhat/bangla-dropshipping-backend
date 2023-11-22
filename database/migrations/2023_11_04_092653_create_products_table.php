@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('child_category_id');
             $table->string('name');
             $table->text('description');
-            $table->string('image')->nullable();
             $table->decimal('price');
             $table->decimal('discoutPrice')->nullable();
             $table->string('colour');

@@ -32,6 +32,7 @@
                                     <tr>
                                     <th scope="col">Serial No</th>
                                     <th scope="col">Name</th>
+                                    <th scope="col">Code</th>
                                     <th scope="col">Image</th>
                                     <th scope="col">Action</th>
                                     </tr>
@@ -39,16 +40,19 @@
                                 <tbody>
                                     @foreach($products as $product)
                                         <tr>
-                                        <th scope="row">{{ $loop->iteration }}</th>
+                                        <td scope="row">{{ $loop->iteration }}</td>
                                         <td>{{ $product->name }}</td>
+                                        <td>{!! DNS1D::getBarcodeHTML("$product->product_code", 'C39'); !!}</td>
+
                                         <td>
-                                            <img src="{{ $product->image }}" height="50" width="50" alt="">
-                                           
+                                            @foreach($product->images as $image)
+                                                <img src="{{ $image->image }}" height="50" width="50" alt="">
+                                            @endforeach
                                         </td>
                                         
                                         <td>
-                                            <button class="btn btn-primary">Edit</button>
-                                            <button class="btn btn-danger">Delete</button>
+                                            <a href="{{ route('edit_product', ['id' => $product->id])}}" class="btn btn-primary">Edit</a>
+                                            <a href="{{ route('delete_product', ['id' => $product->id])}}" class="btn btn-danger">Delete</a>
                                         </td>
                                         </tr>
                                     @endforeach
