@@ -11,6 +11,7 @@ use App\Http\Controllers\Api\ChildCategoryController;
 use App\Http\Controllers\Api\HomeController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ReviewController;
+use App\Http\Controllers\Api\SliderController;
 
 
 /*
