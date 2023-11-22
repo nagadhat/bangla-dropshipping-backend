@@ -4,11 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use App\Models\Category;
 use App\Models\SubCategory;
 use Validator;
 use File;
-use Illuminate\Support\Str;
+
 
 class CategoryController extends Controller
 {
@@ -20,6 +21,7 @@ class CategoryController extends Controller
 
         // check method
         if ($request->isMethod('POST')) {
+            
             // validation
             $validation = Validator::make( $request->all(), [
                 'name' => 'required|max:150',
@@ -27,8 +29,13 @@ class CategoryController extends Controller
                 'priority' => 'required'
                 
             ]);
-    
+            // return $request->all();
+            // return $validation->massages();
+           
             if($validation->fails()){
+                // return response()->json([
+                //     'error' => $validation->massages(),
+                // ]); 
                 return redirect()->route('add_category')->with('message', 'Please Fillup Required Fields');
     
             }else{
@@ -42,7 +49,7 @@ class CategoryController extends Controller
                     $image_path = url('/images/category-images'.'/'.$image_name);
                 }
                 $slug = Str::slug($request->name, '-');
-
+                
                 $category = Category::create([
                     'name' => $request->name,
                     'image' =>  $image_path,
