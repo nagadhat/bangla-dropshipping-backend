@@ -55,7 +55,7 @@ class ProductController extends Controller
 
         if($product){
             return response()->json([
-                'product' => $product,
+                'data' => $product,
     
             ]);
         }else{

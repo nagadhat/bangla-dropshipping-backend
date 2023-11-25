@@ -55,95 +55,86 @@
                             <span> Dashboard </span>
                         </a>
                     </li>
-
                     <li>
                         <a href="javascript: void(0);">
-                            <i class="mdi mdi-page-layout-sidebar-left"></i>
-                            <span> Category </span>
-                            <span class="menu-arrow"></span>
-                        </a>
-                        <ul class="nav-second-level" aria-expanded="false">
-                            <li>
-                                <a href="{{ route('add_category') }}">
-                                <i class="mdi mdi-texture"></i>
-                                    <span>Add Category</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ route('get_categories') }}">
-                                <i class="mdi mdi-view-list"></i>
-                                    <span>Manage Category</span>
-                                </a>
-                            </li>
-                            
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript: void(0);">
-                            <i class="mdi mdi-page-layout-sidebar-left"></i>
-                            <span> Sub Category </span>
-                            <span class="menu-arrow"></span>
-                        </a>
-                        <ul class="nav-second-level" aria-expanded="false">
-                            <li>
-                                <a href="{{ route('add_sub_category') }}">
-                                <i class="mdi mdi-texture"></i>
-                                    <span>Create Sub-Category</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ route('get_sub_categories') }}">
-                                <i class="mdi mdi-view-list"></i>
-                                    <span>Manage Sub-Category</span>
-                                </a>
-                            </li>
-                            
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript: void(0);">
-                            <i class="mdi mdi-page-layout-sidebar-left"></i>
-                            <span> Child Category </span>
-                            <span class="menu-arrow"></span>
-                        </a>
-                        <ul class="nav-second-level" aria-expanded="false">
-                            <li>
-                                <a href="{{ route('add_child_category') }}">
-                                <i class="mdi mdi-texture"></i>
-                                    <span>Add Child-Category</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ route('get_child_categories') }}">
-                                <i class="mdi mdi-view-list"></i>
-                                    <span>Manage Child-Category</span>
-                                </a>
-                            </li>
-                            
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript: void(0);">
-                            <i class="mdi mdi-page-layout-sidebar-left"></i>
+                            <i class="mdi mdi-share-variant"></i>
                             <span> Product </span>
                             <span class="menu-arrow"></span>
                         </a>
-                        <ul class="nav-second-level" aria-expanded="false">
+                        <ul class="nav-second-level nav" aria-expanded="false">
                             <li>
-                                <a href="{{ route('add_product') }}">
-                                <i class="mdi mdi-texture"></i>
-                                    <span>Add Product</span>
+                                <a href="javascript: void(0);" aria-expanded="false">Products
+                                    <span class="menu-arrow"></span>
                                 </a>
+                                <ul class="nav-third-level nav" aria-expanded="false">
+                                    <li>
+                                        <a href="{{ route('add_product') }}">Add Product</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('get_products') }}">Manage Product</a>
+                                    </li>
+                                </ul>
                             </li>
                             <li>
-                                <a href="{{ route('get_products') }}">
-                                <i class="mdi mdi-view-list"></i>
-                                    <span>Manage Product</span>
+                                <a href="javascript: void(0);" aria-expanded="false">Brands
+                                    <span class="menu-arrow"></span>
                                 </a>
+                                <ul class="nav-third-level nav" aria-expanded="false">
+                                    <li>
+                                        <a href="{{ route('add_product') }}">Add Brands</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('add_product') }}">Manage Brands</a>
+                                    </li>
+                                </ul>
                             </li>
-                            
+                            <li>
+                                <a href="javascript: void(0);" aria-expanded="false">Category
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <ul class="nav-third-level nav" aria-expanded="false">
+                                    <li>
+                                        <a href="{{ route('add_category') }}">Add Category</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('get_categories') }}">Manage Category</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript: void(0);" aria-expanded="false">Sub Category
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <ul class="nav-third-level nav" aria-expanded="false">
+                                    <li>
+                                        <a href="{{ route('add_sub_category') }}">Add Sub-Category</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('get_sub_categories') }}">Manage Sub-Category</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript: void(0);" aria-expanded="false">Child Category
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <ul class="nav-third-level nav" aria-expanded="false">
+                                    <li>
+                                        <a href="{{ route('add_child_category') }}">Add Child-Category</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('get_child_categories') }}">Manage Child-Category</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript: void(0);">Variants</a>
+                            </li>
                         </ul>
                     </li>
+                    
+                   
+                   
                     <li>
                         <a href="javascript: void(0);">
                             <i class="mdi mdi-page-layout-sidebar-left"></i>
@@ -349,10 +340,10 @@
                                 </a>
                                 <ul class="nav-third-level nav" aria-expanded="false">
                                     <li>
-                                        <a href="javascript: void(0);">Level 2.1</a>
+                                        <a href="javascript: void(0);">Add Products</a>
                                     </li>
                                     <li>
-                                        <a href="javascript: void(0);">Level 2.2</a>
+                                        <a href="javascript: void(0);">Product List</a>
                                     </li>
                                 </ul>
                             </li>
