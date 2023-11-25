@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Admin\ChildCategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SliderController;
+use App\Http\Controllers\Admin\BrandController;
 
 
 
@@ -50,6 +51,12 @@ Route::group(['middleware' => 'disable'], function(){
          Route::match(['get', 'post'], '/add/child-category', [ChildCategoryController::class, 'store'])->name('add_child_category');
          Route::get('/child-categories', [ChildCategoryController::class, 'index'])->name('get_child_categories');
 
+        // Routes for brand
+         Route::match(['get', 'post'], '/add/brand', [BrandController::class, 'store'])->name('add_brand');
+         Route::get('/brands', [BrandController::class, 'index'])->name('get_brands');
+         Route::match(['get', 'post'], '/edit/brand/{id}', [BrandController::class, 'update'])->name('edit_brand');
+         Route::get('/delete/brand/{id}', [BrandController::class, 'delete'])->name('delete_brand');
+       
          // route for slider
          Route::match(['get', 'post'], '/add/slider', [SliderController::class, 'store'])->name('add_slider');
          Route::get('/sliders', [SliderController::class, 'index'])->name('get_sliders');
