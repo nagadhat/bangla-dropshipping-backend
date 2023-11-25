@@ -38,7 +38,6 @@ Route::get('get-products-by-category/{slug}/{id}', [ProductController::class, 'p
 Route::get('get-products-by-subcategory/{slug}/{id}', [ProductController::class, 'products_by_subcategory']);
 Route::get('get-products-by-childcategory/{slug}/{id}', [ProductController::class, 'products_by_childcategory']);
 
-
 Route::get('get-all-categories', [CategoryController::class, 'get_all_categories']);
 Route::get('get-sliders', [SliderController::class, 'get_sliders']);
 
