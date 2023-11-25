@@ -41,6 +41,8 @@ Route::get('get-products-by-childcategory/{slug}/{id}', [ProductController::clas
 Route::get('get-all-categories', [CategoryController::class, 'get_all_categories']);
 Route::get('get-sliders', [SliderController::class, 'get_sliders']);
 
+Route::get('categories', [CategoryController::class, 'index']);
+
 Route::middleware('auth:api')->group( function () {
     // Order routes
     Route::get('orders', [OrderController::class, 'index']);
@@ -50,7 +52,7 @@ Route::middleware('auth:api')->group( function () {
     Route::delete('orders/{id}', [OrderController::class, 'delete']);
 
     // Category routes
-    Route::get('categories', [CategoryController::class, 'index']);
+    
     Route::post('add/category', [CategoryController::class, 'store']);
     Route::put('update/category/{id}', [CategoryController::class, 'update']);
     Route::delete('delete/category/{id}', [CategoryController::class, 'delete']);

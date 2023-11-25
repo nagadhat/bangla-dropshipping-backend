@@ -71,7 +71,7 @@
                                         <a href="{{ route('add_product') }}">Add Product</a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('get_products') }}">Manage Product</a>
+                                        <a href="{{ route('get_products') }}">All Product</a>
                                     </li>
                                 </ul>
                             </li>
@@ -81,10 +81,10 @@
                                 </a>
                                 <ul class="nav-third-level nav" aria-expanded="false">
                                     <li>
-                                        <a href="{{ route('add_product') }}">Add Brands</a>
+                                        <a href="{{ route('add_brand') }}">Add Brands</a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('add_product') }}">Manage Brands</a>
+                                        <a href="{{ route('get_brands') }}">Manage Brands</a>
                                     </li>
                                 </ul>
                             </li>
@@ -131,10 +131,7 @@
                                 <a href="javascript: void(0);">Variants</a>
                             </li>
                         </ul>
-                    </li>
-                    
-                   
-                   
+                    </li>              
                     <li>
                         <a href="javascript: void(0);">
                             <i class="mdi mdi-page-layout-sidebar-left"></i>
