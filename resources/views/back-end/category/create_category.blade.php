@@ -40,10 +40,10 @@
                                             <option value="{{ $category->id }}">{{ $category->name }}
                                                 @foreach($category->children as $child)
                                                 <div class="py-5">
-                                                    <option class="py-5" value="{{ $child->id }}">{{ $child->name }} 
+                                                    <option class="py-5" value="{{ $child->id }}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ $child->name }} 
                                                 </div>
                                                         @foreach($child->children as $child2)
-                                                            <option value="{{ $child2->id }}">{{ $child2->name }} </option>
+                                                            <option value="{{ $child2->id }}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ $child2->name }} </option>
                                                         @endforeach
                                                     </option>
                                                 @endforeach
