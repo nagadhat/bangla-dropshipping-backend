@@ -43,7 +43,11 @@
                                         <th scope="row">{{ $loop->iteration }}</th>
                                         <td>{{ $category->name }}</td>
                                         <td>
-                                            <img src="{{ $category->image }}" height="50" width="50" alt="">
+                                            @if( $category->image == null )
+                                                <p>Image not found</p>
+                                            @else
+                                                <img src="{{ $category->image }}" height="50" width="50" alt="">
+                                            @endif
                                         </td>
                                         <td>
                                             @if ($category->priority == 'high')

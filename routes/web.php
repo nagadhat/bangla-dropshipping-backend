@@ -56,6 +56,7 @@ Route::group(['middleware' => 'disable'], function(){
          Route::get('/brands', [BrandController::class, 'index'])->name('get_brands');
          Route::match(['get', 'post'], '/edit/brand/{id}', [BrandController::class, 'update'])->name('edit_brand');
          Route::get('/delete/brand/{id}', [BrandController::class, 'delete'])->name('delete_brand');
+         Route::get('/change-status/{id}', [BrandController::class, 'changeStatus'])->name('change_status');
        
          // route for slider
          Route::match(['get', 'post'], '/add/slider', [SliderController::class, 'store'])->name('add_slider');

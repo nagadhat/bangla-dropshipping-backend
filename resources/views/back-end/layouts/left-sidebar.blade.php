@@ -101,7 +101,7 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li>
+                            <!-- <li>
                                 <a href="javascript: void(0);" aria-expanded="false">Sub Category
                                     <span class="menu-arrow"></span>
                                 </a>
@@ -126,7 +126,7 @@
                                         <a href="{{ route('get_child_categories') }}">Manage Child-Category</a>
                                     </li>
                                 </ul>
-                            </li>
+                            </li> -->
                             <li>
                                 <a href="javascript: void(0);">Variants</a>
                             </li>
