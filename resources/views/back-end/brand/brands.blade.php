@@ -6,7 +6,7 @@
     <div class="content-page">
         <div class="content">
             <div class="container-fluid">
-                <div class="col-12 py-3">
+               <!--  <div class="col-12 py-3">
                     @if (session()->has('message'))
                         <div class="alert bg-info">
                             {{ session('message') }}
@@ -56,7 +56,166 @@
                             </table>
                         </div>
                     </div>               
+                </div> -->
+
+                <div>
+              <div class="brandsCartHeader">
+                <div class="p-2 w-50 bd-highlight ">
+                  <input class="form-control " type="text" placeholder="Search" aria-label="default input example">
                 </div>
+                <div class="ms-auto  p-2 bd-highlight">
+                  <button type="button" class="btn btn-success"><i class="fa-solid fa-plus"></i> Create New</button>
+                </div>
+              </div>
+
+            <div class="row row-cols-1 row-cols-lg-5 row-cols-md-3 row-cols-sm-3 g-4">
+                <div class="col pb-3">
+                  <div class="card h-100" >
+                    <img src="{{ asset('/images/brands.jpg') }}" class="card-img-top" alt="...">
+                    <div class="card-body ">
+                      <h5 class="card-title">Card title</h5> 
+                    </div>
+                    <div class="card-footer text-muted">
+                      <div class="d-flex justify-content-around align-items-center">
+                        <div  class="brandsCustomDesign">
+                          <button type="button" class="btn btn-success"><i class="fa-solid fa-pen"></i> Edit</button>
+                          <button type="button" class="btn btn-primary">Active</button>
+                         </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col pb-3">
+                  <div class="card h-100" >
+                    <img src="Images/brands.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                     
+                
+                    </div>
+                    <div class="card-footer text-muted">
+                      <div class="d-flex justify-content-around align-items-center">
+                        <div  class="brandsCustomDesign">
+                          <button type="button" class="btn btn-success"><i class="fa-solid fa-pen"></i> Edit</button>
+                          <button type="button" class="btn btn-primary">Active</button>
+                         </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col pb-3">
+                  <div class="card h-100" >
+                    <img src="Images/brands.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                    
+                    </div>
+                    <div class="card-footer text-muted">
+                      <div class="d-flex justify-content-around align-items-center">
+                        <div  class="brandsCustomDesign">
+                          <button type="button" class="btn btn-success"><i class="fa-solid fa-pen"></i> Edit</button>
+                          <button type="button" class="btn btn-primary">Active</button>
+                         </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col pb-3">
+                  <div class="card h-100" >
+                    <img src="Images/brands.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      
+                    </div>
+                    <div class="card-footer text-muted">
+                      <div class="d-flex justify-content-around align-items-center">
+                        <div  class="brandsCustomDesign">
+                          <button type="button" class="btn btn-success"><i class="fa-solid fa-pen"></i> Edit</button>
+                          <button type="button" class="btn btn-primary">Active</button>
+                         </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col pb-3">
+                  <div class="card h-100"  >
+                    <img src="Images/brands.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      
+                    </div>
+                    <div class="card-footer text-muted">
+                      <div class="d-flex justify-content-around align-items-center">
+                        <div  class="brandsCustomDesign">
+                          <button type="button" class="btn btn-success"><i class="fa-solid fa-pen"></i> Edit</button>
+                          <button type="button" class="btn btn-primary">Active</button>
+                         </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col pb-3">
+                  <div class="card h-100" >
+                    <img src="Images/brands.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      
+                    </div>
+                    <div class="card-footer text-muted">
+                      <div class="d-flex justify-content-around align-items-center">
+                        <div  class="brandsCustomDesign">
+                          <button type="button" class="btn btn-success"><i class="fa-solid fa-pen"></i> Edit</button>
+                          <button type="button" class="btn btn-primary">Active</button>
+                         </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col pb-3">
+                  <div class="card h-100" >
+                    <img src="Images/brands.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                     
+                    </div>
+                    <div class="card-footer text-muted">
+                      <div class="d-flex justify-content-around align-items-center">
+                        <div  class="brandsCustomDesign ">
+                          <button type="button" class="btn btn-success"><i class="fa-solid fa-pen"></i> Edit</button>
+                          <button type="button" class="btn btn-primary">Active</button>
+                         </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col pb-3">
+                  <div class="card h-100" >
+                    <img src="Images/brands.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                     
+                    </div>
+                    <div class="card-footer text-muted">
+                      <div class="d-flex justify-content-around align-items-center">
+                        <div  class="brandsCustomDesign">
+                          <button type="button" class="btn btn-success"><i class="fa-solid fa-pen"></i> Edit</button>
+                          <button type="button" class="btn btn-primary">Active</button>
+                         </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+        </div>
+    </div>
+
+
+
+
+
+
+
             </div>
         </div> <!-- content -->
     </div>

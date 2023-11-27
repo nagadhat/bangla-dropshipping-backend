@@ -1,0 +1,14 @@
+/* d-flex justify-content-center align-items-center gap-2 */
+.brandsCustomDesign{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+/* d-flex bd-highlight mb-3 */
+.brandsCartHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
