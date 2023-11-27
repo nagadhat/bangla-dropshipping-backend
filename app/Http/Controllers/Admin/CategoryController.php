@@ -20,11 +20,13 @@ class CategoryController extends Controller
 
         // check method
         if ($request->isMethod('POST')) {
+            // return $request->all();
             // validation
             $validation = Validator::make( $request->all(), [
                 'name' => 'required',
                 'icon' => 'nullable|mimes:png,jpg,jpeg,svg',
-                'priority' => 'required'
+                'priority' => 'required',
+                'parent_category' => 'nullable',
                 
             ]);
     
@@ -33,6 +35,7 @@ class CategoryController extends Controller
                 return redirect()->route('add_category')->with('message', 'Please Fillup Required Fields');
     
             }else{
+                // if($request->parent_category)
                 $image = $request->file('icon');
                 // upload image to folder
                 if( $request->has('icon')){
@@ -41,10 +44,13 @@ class CategoryController extends Controller
                     $image->move($image_folder, $image_name);
     
                     $image_path = url('/images/category-images'.'/'.$image_name);
+                }else{
+                    $image_path = null;
                 }
                 $slug = Str::slug($request->name, '-');
 
                 $category = Category::create([
+                    'parent_id' => $request->parent_category,
                     'name' => $request->name,
                     'image' =>  $image_path,
                     'priority' => $request->priority,
@@ -59,7 +65,9 @@ class CategoryController extends Controller
                 }
             }
         }else {
-            return view('back-end.category.create_category');
+
+            $categories = Category::categoryTree();
+            return view('back-end.category.create_category', compact('categories'));
         }
     }
     public function update(Request $request,$id){

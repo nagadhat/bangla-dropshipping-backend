@@ -17,15 +17,35 @@ class Category extends Model
 
     protected $guarded = ['id'];
 
-    public function sub_category(){
-        return $this->hasMany(SubCategory::class);
-    }
+    // public function sub_category(){
+    //     return $this->hasMany(SubCategory::class);
+    // }
 
-    public function child_categories(){
-        return $this->hasManyThrough(ChildCategory::class, SubCategory::class);
-    }
+    // public function child_categories(){
+    //     return $this->hasManyThrough(ChildCategory::class, SubCategory::class);
+    // }
 
     public function products(){
         return $this->hasMany(Product::class);
+    }
+
+    public static function categoryTree(){
+
+        $allCategories = Category::all();
+        $rootCategories = $allCategories->whereNull('parent_id');
+
+        self::formateTree($rootCategories, $allCategories);
+        
+        return $rootCategories;
+
+    }
+    private static function formateTree($categories, $allCategories){
+        foreach($categories as $category){
+            $category->children = $allCategories->where('parent_id', $category->id)->values();
+
+            if($category->children->isNotEmpty()){
+                self::formateTree($category->children, $allCategories);
+            }
+        }
     }
 }

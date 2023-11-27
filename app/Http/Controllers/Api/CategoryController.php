@@ -272,7 +272,7 @@ class CategoryController extends Controller
     }
     public function get_all_categories(){
 
-        $category = Category::with('sub_category.child_category')->get();
+        $category = Category::categoryTree();
 
         if($category){
             return response()->json([

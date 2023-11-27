@@ -44,7 +44,11 @@
                                         <td>{{ $brand->description }}</td>
                                         <td>
                                             <a href="{{ route('edit_brand', ['id' => $brand->id]) }}" class="btn btn-primary">Edit</a>
-                                            <a href="{{ route('delete_brand', ['id' => $brand->id]) }}" class="btn btn-danger">Delete</a>
+                                            @if($brand->status == 1)
+                                            <a href="{{ route('change_status', ['id' => $brand->id]) }}" class="btn btn-success">Active</a>
+                                            @else
+                                            <a href="{{ route('change_status', ['id' => $brand->id]) }}" class="btn btn-danger">Inactive</a>
+                                            @endif
                                         </td>
                                         </tr>
                                     @endforeach

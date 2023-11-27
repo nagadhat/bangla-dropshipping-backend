@@ -23,24 +23,24 @@
                 <div class="col-12 pt-3">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Create Brand</h3>
+                            <h3 class="card-title">Edit Brand</h3>
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('add_brand') }}" method="post" enctype="multipart/form-data">
+                            <form action="{{ route('edit_brand',['id' => $brand->id ]) }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group mb-3">
                                     <label for="" class="form-label">Brand Name</label>
-                                    <input type="text" name="name" id="" class="form-control">
+                                    <input type="text" name="name" id="" class="form-control" value="{{ $brand->name }}">
                                 </div>
                                
                                 <div class="form-group mb-3">
                                     <label for="" class="form-label">Description</label>
-                                    <textarea class="form-control" name="description" id="" cols="30" rows="10"></textarea>
+                                    <textarea class="form-control" name="description" id="" cols="30" rows="10">{{ $brand->description }}</textarea>
                                 </div>
                                 <div class="form-group mb-3">
                                     <label for="" class="form-label">Image</label>
                                     <input type="file" name="icon" id="selectImage" class="form-control">
-                                    <img id="preview" src="#" alt="your image" class="mt-3" style="display:none;height:100px;width:100px;"/>
+                                    <img id="preview" src="{{ $brand->image }}" alt="your image" class="mt-3" style="height:100px;width:100px;"/>
                                 
                                 </div>
                                 <div class="text-right">
