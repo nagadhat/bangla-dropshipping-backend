@@ -39,13 +39,27 @@
                                                 <select class="form-select form-control" name="category_id" id="category" aria-label="Default select example">
                                                     <option selected>Select category</option>
                                                     @foreach($categories as $category)
-                                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                                        <option value="{{ $category->id }}">{{ $category->name }}
+                                                            @foreach($category->children as $child)
+                                                            <div class="py-5">
+                                                                <option class="py-5" value="{{ $child->id }}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ $child->name }} 
+                                                            </div>
+                                                                    @foreach($child->children as $child2)
+                                                                        <option value="{{ $child2->id }}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ $child2->name }} </option>
+                                                                    @endforeach
+                                                                </option>
+                                                            @endforeach
+                                                    
+                                                        </option>
                                                     @endforeach
                                                 </select>
                                             </div>
                                             <div class="col-6">
                                                 <select class="form-select form-control" name="sub_category_id" id="subCategory" aria-label="Default select example">
-                                                    <option selected>Select brand</option>                  
+                                                    <option selected>Select brand</option> 
+                                                    @foreach($brands as $brand)
+                                                        <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+                                                    @endforeach                 
                                                 </select>
                                             </div>
                                         </div>
@@ -93,7 +107,10 @@
                                                 <div class="col-4">
                                                     <label for="" class="form-label">Size</label>
                                                     <select class="form-select form-control"  name="size[]" id="subCategory" aria-label="Default select example">
-                                                        <option selected>Select Size</option>                  
+                                                        <option selected>Select Size</option>   
+                                                        @foreach($sizes as $size) 
+                                                            <option value="{{ $size->id }}"> {{ $size->name }}</option>  
+                                                        @endforeach            
                                                     </select>
                                                 </div>
                                                 <div class="col-4">
