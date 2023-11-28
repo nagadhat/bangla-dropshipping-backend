@@ -9,6 +9,8 @@ use App\Models\Category;
 use App\Models\ChildCategory;
 use App\Models\SubCategory;
 use App\Models\Image;
+use App\Models\Brand;
+use App\Models\Size;
 use Validator;
 use File;
 use Illuminate\Support\Str;
@@ -93,8 +95,11 @@ class ProductController extends Controller
             }
         }else {
             $product_code = mt_rand(1000000000, 9999999999);
-            $categories = Category::all();
-            return view('back-end.product.create_product', compact('categories', 'product_code'));
+            $categories = Category::categoryTree();
+            $brands = Brand::orderBy('id', 'DESC')->get();
+            $sizes = Size::orderBy('id', 'DESC')->get();
+
+            return view('back-end.product.create_product', compact('categories', 'product_code', 'brands', 'sizes'));
         }
     }
     public function update(Request $request, $id){

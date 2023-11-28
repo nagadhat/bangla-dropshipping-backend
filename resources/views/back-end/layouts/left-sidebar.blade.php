@@ -139,7 +139,7 @@
                                         </a>
                                         <ul class="nav-third-level nav" aria-expanded="false">
                                             <li>
-                                                <a href="">Add Size</a>
+                                                <a href="{{ route('add_size') }}">Add Size</a>
                                             </li>
                                             <li>
                                                 <a href="{{ route('get_sizes') }}">Manage Size</a>
