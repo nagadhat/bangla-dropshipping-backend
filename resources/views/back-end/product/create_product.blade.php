@@ -53,41 +53,21 @@
                                 </div>
                                 <div class="form-group mb-3">
                                     <label for="" class="form-label">Description</label>
-                                    <textarea class="form-control" name="description" id="" cols="30" rows="10"></textarea>
+                                    <textarea class="form-control" name="description" id="summernote" cols="30" rows="10"></textarea>
                                 </div>
                                 <div class="form-group mb-3">
                                     <label for="" class="form-label">Photo</label>
-                                    <div class="row align-items-center">
-                                        <div class="">
+                                    <!-- <div class="row align-items-center"> -->
+                                        
                                             <input type="file" name="images[]"  onchange="preview(this)" id="selectImage" class="form-control" multiple>
                                             <div class="me-2"></div>
-                                        </div>
-                                    </div>
+                                        
+                                    <!-- </div> -->
                                     <!-- <img id="preview" src="#" alt="your image" class="mt-3" style="display:none;height:100px;width:100px;"/> -->
                                 </div>
-                                <div class="form-group mb-3">
-                                    <div class="col-12">
-                                        <div class="row justify-content-center">
-                                            <div class="col-4">
-                                                <label for="" class="form-label">Type</label>
-                                                <select class="form-select form-control" name="product_type" id="product_type" aria-label="Default select example">
-                                                    <option selected>Select type</option>
-                                                    <option value="1">Single</option>
-                                                    <option value="2">Variant</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-4">
-                                                <label for="" class="form-label">Model</label>
-                                                <input type="text" name="model" id="" class="form-control">   
-                                            </div>
-                                            <div class="col-4">
-                                                <label for="" class="form-label">SKU</label>
-                                                <input type="number" name="product_code" id="" class="form-control" value="{{ $product_code }}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group mb-3 productPrice">
+
+
+                                <!-- <div class="form-group mb-3 productPrice">
                                     <div class="col-12">
                                         <div class="row justify-content-center">
                                             <div class="col-6"> 
@@ -100,8 +80,55 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div> -->
+
+                                <div class="productVariants py-3 addVariants">
+                                    <h1 class="text-center pb-4">Variations</h1>
+                                    <div class="form-group mb-3 py-1">
+                                        <div class="col-12">
+                                            <div class="row justify-content-center">
+                                                <div class="col-4">
+                                                    <label for="" class="form-label">Image</label>
+                                                    <input type="file" name="image[]" id="sizeField" class="form-control" multiple>
+                                                </div>
+                                                <div class="col-4">
+                                                    <label for="" class="form-label">Size</label>
+                                                    <select class="form-select form-control"  name="size[]" id="subCategory" aria-label="Default select example">
+                                                        <option selected>Select Size</option>                  
+                                                    </select>
+                                                </div>
+                                                <div class="col-4">
+                                                    <label for="" class="form-label">Colour</label>
+                                                    <select class="form-select form-control"  name="colour[]" id="subCategory" aria-label="Default select example">
+                                                        <option selected>Select Colour</option>                  
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 py-1">
+                                            <div class="row justify-content-center">
+                                                <div class="col-4">
+                                                    <label for="" class="form-label">Price</label>
+                                                    <input type="number" name="price" id="" class="form-control">
+                                                </div>
+                                                <div class="col-4">
+                                                    <label for="" class="form-label">Discount Price</label>
+                                                    <input type="number" name="discountPrice" id="" class="form-control">
+                                                </div>
+                                                <div class="col-4">
+                                                    <label for="" class="form-label">Quantity</label>
+                                                    <input type="number" name="quantity" id="" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-1">
+                                            <label for="" class="form-label"></label>
+                                            <a href="" id="variantBtn" class="btn btn-success mt-3">+</a>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="form-group mb-3 productVariants">
+                                
+                                <!-- <div class="form-group mb-3 productVariants">
                                     <div class="col-12">
                                         <div class="row justify-content-center">
                                             <div class="col-6">
@@ -128,16 +155,38 @@
                                                             <button class="btn btn-success" id="addColourInput">+</button>
                                                         </div>
                                                     </div>       
-                                                </div>
-                                                
+                                                </div>                
                                             </div>
-                                            <!-- <div class="col-4">
-                                                <label for="" class="form-label">Quantity</label>
-                                                <input type="number" name="quantity" id="" class="form-control">
-                                            </div> -->
+                                        </div>
+                                    </div>
+                                </div> -->
+                                <div class="form-group mb-3">
+                                    <div class="col-12">
+                                        <div class="row justify-content-center">
+                                            <div class="col-3">
+                                                <label for="" class="form-label">Type</label>
+                                                <select class="form-select form-control" name="product_type" id="product_type" aria-label="Default select example">
+                                                    <!-- <option selected>Select type</option> -->
+                                                    <option value="1">Single</option>
+                                                    <option value="2">Variant</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-3">
+                                                <label for="" class="form-label">Model</label>
+                                                <input type="text" name="model" id="" class="form-control">   
+                                            </div>
+                                            <div class="col-3">
+                                                <label for="" class="form-label">SKU</label>
+                                                <input type="number" name="product_code" id="" class="form-control" value="{{ $product_code }}">
+                                            </div>
+                                            <div class="col-3"> 
+                                                <label for="" class="form-label">Price</label>
+                                                <input type="number" name="price" id="" class="form-control" step="any">                                             
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                               
                                 <div class="text-right">
                                     <button type="submit" class="btn btn-primary">Save</button>
                                 </div>
@@ -151,7 +200,11 @@
 
     <!-- script to preview multiple image before upload -->
     <script>
+       
        $("document").ready( function(){
+        $('#summernote').summernote({
+                height: 300
+            }); 
         $(".productVariants").hide();
         $(".productPrice").hide();
        
@@ -240,10 +293,57 @@
                                         </div>
                                     </div> `);
         });
+        $("#variantBtn").click(function(e){
+            e.preventDefault();
+            $(".addVariants").append(` <div class="form-group mb-3 py-1">
+                                        <div class="col-12">
+                                            <div class="row justify-content-center">
+                                                <div class="col-4">
+                                                    <label for="" class="form-label">Image</label>
+                                                    <input type="file" name="image[]" id="sizeField" class="form-control" multiple>
+                                                </div>
+                                                <div class="col-4">
+                                                    <label for="" class="form-label">Size</label>
+                                                    <select class="form-select form-control"  name="size[]" id="subCategory" aria-label="Default select example">
+                                                        <option selected>Select Size</option>                  
+                                                    </select>
+                                                </div>
+                                                <div class="col-4">
+                                                    <label for="" class="form-label">Colour</label>
+                                                    <select class="form-select form-control"  name="colour[]" id="subCategory" aria-label="Default select example">
+                                                        <option selected>Select Colour</option>                  
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 py-1">
+                                            <div class="row justify-content-center">
+                                                <div class="col-4">
+                                                    <label for="" class="form-label">Price</label>
+                                                    <input type="number" name="price" id="" class="form-control">
+                                                </div>
+                                                <div class="col-4">
+                                                    <label for="" class="form-label">Discount Price</label>
+                                                    <input type="number" name="discountPrice" id="" class="form-control">
+                                                </div>
+                                                <div class="col-4">
+                                                    <label for="" class="form-label">Quantity</label>
+                                                    <input type="number" name="quantity" id="" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-1">
+                                                    <label for="" class="form-label"></label>
+                                                    <a href="" id="variantRemovebtn" class="btn btn-danger mt-3">-</a>
+                                                </div>
+                                    </div> 
+                                    `);
+        });
 
-        $(document).on('click','#sizeRemovebtn', function(e){
+        $(document).on('click','#variantRemovebtn', function(e){
             e.preventDefault();
             $(this).parent().parent().remove();
+
             // $(rowItem).remove();
 
         });
