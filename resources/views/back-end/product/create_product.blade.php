@@ -66,7 +66,6 @@
                                     <!-- <img id="preview" src="#" alt="your image" class="mt-3" style="display:none;height:100px;width:100px;"/> -->
                                 </div>
 
-
                                 <!-- <div class="form-group mb-3 productPrice">
                                     <div class="col-12">
                                         <div class="row justify-content-center">
@@ -84,7 +83,7 @@
 
                                 <div class="productVariants py-3 addVariants">
                                     <h1 class="text-center pb-4">Variations</h1>
-                                    <div class="form-group mb-3 py-1">
+                                    <div class="form-group mb-3 py-1 variantsForms">
                                         <div class="col-11">
                                             <div class="row justify-content-center">
                                                 <div class="col-4">
@@ -121,13 +120,12 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-1">
+                                        <div id="addVariant" class="col-1">
                                             <label for="" class="form-label"></label>
                                             <a href="" id="variantBtn" class="btn btn-success mt-3">+</a>
                                         </div>
                                     </div>
                                 </div>
-                                
                                 <!-- <div class="form-group mb-3 productVariants">
                                     <div class="col-12">
                                         <div class="row justify-content-center">
