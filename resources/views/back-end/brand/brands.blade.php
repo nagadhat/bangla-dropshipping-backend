@@ -77,9 +77,11 @@
                                 <div class="">
                                     <div class="brandsCustomDesign">
                                         @if($brand->status == 1)
-                                            <a href="{{ route('change_status', ['id' => $brand->id]) }}" class="btn d-flex justify-content-around align-items-center px-2 py-1 bg-success text-white border-0">Active</a>
+                                            <!-- <a href="{{ route('change_status', ['id' => $brand->id]) }}" class="btn d-flex justify-content-around align-items-center px-2 py-1 bg-success text-white border-0">Active</a> -->
+                                            <a href="" class="btn d-flex justify-content-around align-items-center px-2 py-1 bg-success text-white border-0">Active</a>
                                         @else
-                                            <a href="{{ route('change_status', ['id' => $brand->id]) }}" class="btn d-flex justify-content-around align-items-center px-2 py-1 bg-danger text-white border-0">Inactive</a>
+                                            <!-- <a href="{{ route('change_status', ['id' => $brand->id]) }}" class="btn d-flex justify-content-around align-items-center px-2 py-1 bg-danger text-white border-0">Inactive</a> -->
+                                            <a href="" class="btn d-flex justify-content-around align-items-center px-2 py-1 bg-danger text-white border-0">Inactive</a>
                                         @endif
                                         <button type="button" class="text-black border-0" onclick="myFunction('menu{{ $brand->id }}')">
                                             <i class="fas fa-ellipsis-vertical"></i>
@@ -87,10 +89,9 @@
                                     </div>
                                     <div id="menu{{ $brand->id }}" class="brandsManage" style="display: none;">
                                         <div class="brandsManageDesign">
-                                        <button type="button"
-                                            class="d-flex justify-content-around align-items-center px-2 py-1 bg-info text-white border-0">Manage</button>
-                                            <button type="button"
-                                            class="d-flex justify-content-around align-items-center px-2 py-1 bg-info text-white border-0">inActive</button>
+                                            <a href="{{ route('edit_brand', ['id' => $brand->id]) }}" class="d-flex justify-content-around align-items-center px-2 py-1 bg-info text-white border-0">Manage</a>
+                                            
+                                            <a href="{{ route('change_status', ['id' => $brand->id]) }}" class="d-flex justify-content-around align-items-center px-2 py-1 bg-info text-white border-0">{{ $brand->status == 1?'Inactive':'Active' }}</a>
                                         </div>
                                     </div>
                                 </div>
