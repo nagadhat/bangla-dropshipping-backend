@@ -57,7 +57,7 @@
                     </li>
                     <li>
                         <a href="javascript: void(0);">
-                            <i class="mdi mdi-share-variant"></i>
+                            <i class="mdi mdi-archive"></i>
                             <span> Product </span>
                             <span class="menu-arrow"></span>
                         </a>
