@@ -104,6 +104,7 @@ class BrandController extends Controller
             return view('back-end.brand.edit_brand', compact('brand'));
         }
     }
+
     public function changeStatus($id){
         $brand = Brand::find($id);
         if($brand->status == 1){
