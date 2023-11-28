@@ -92,8 +92,9 @@ class ProductController extends Controller
                 }
             }
         }else {
+            $product_code = mt_rand(1000000000, 9999999999);
             $categories = Category::all();
-            return view('back-end.product.create_product', compact('categories'));
+            return view('back-end.product.create_product', compact('categories', 'product_code'));
         }
     }
     public function update(Request $request, $id){

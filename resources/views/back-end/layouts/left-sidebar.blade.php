@@ -128,8 +128,40 @@
                                 </ul>
                             </li> -->
                             <li>
-                                <a href="javascript: void(0);">Variants</a>
-                            </li>
+                                <a href="javascript: void(0);">
+                                    <span> Variants </span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <ul class="nav-second-level nav" aria-expanded="false">
+                                    <li>
+                                        <a href="javascript: void(0);" aria-expanded="false">Size
+                                            <span class="menu-arrow"></span>
+                                        </a>
+                                        <ul class="nav-third-level nav" aria-expanded="false">
+                                            <li>
+                                                <a href="">Add Size</a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ route('get_sizes') }}">Manage Size</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="javascript: void(0);" aria-expanded="false">Colour
+                                            <span class="menu-arrow"></span>
+                                        </a>
+                                        <ul class="nav-third-level nav" aria-expanded="false">
+                                            <li>
+                                                <a href="">Add Colour</a>
+                                            </li>
+                                            <li>
+                                                <a href="">Manage Colour</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                
+                                </ul>
+                            </li> 
                         </ul>
                     </li>              
                     <li>

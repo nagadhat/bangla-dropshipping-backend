@@ -54,6 +54,10 @@
                                     </select>    
                                 </div>
                                 <div class="form-group mb-3">
+                                    <label for="" class="form-label">Description</label>
+                                    <textarea class="form-control" name="description" id="summernote" cols="30" rows="10"></textarea>
+                                </div>
+                                <div class="form-group mb-3">
                                     <label for="" class="form-label">Photo</label>
                                     <div class="row align-items-center">
                                         <div class="col">
@@ -95,6 +99,11 @@
     </div>
 
     <script>
+        $(document).ready(function() {
+            $('#summernote').summernote({
+                height: 300
+            });                
+         });
         selectImage.onchange = evt => {
             preview = document.getElementById('preview');
             preview.style.display = 'block';

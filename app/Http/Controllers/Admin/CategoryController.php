@@ -13,7 +13,9 @@ use Illuminate\Support\Str;
 class CategoryController extends Controller
 {
     public function index(){
-        $categories = Category::orderBy('id', 'DESC')->get();
+        // $categories = Category::with('parentCategory')->get();
+        $categories = Category::getCategories();
+        // return $categories;
         return view('back-end.category.categories', compact('categories'));
     }
     public function store(Request $request){
@@ -27,6 +29,7 @@ class CategoryController extends Controller
                 'icon' => 'nullable|mimes:png,jpg,jpeg,svg',
                 'priority' => 'required',
                 'parent_category' => 'nullable',
+                'description' => 'required'
                 
             ]);
     
@@ -54,6 +57,7 @@ class CategoryController extends Controller
                     'name' => $request->name,
                     'image' =>  $image_path,
                     'priority' => $request->priority,
+                    'description' => $request->description,
                     'slug' =>  $slug
                 
                 ]);
@@ -79,12 +83,14 @@ class CategoryController extends Controller
             $validation = Validator::make( $request->all(), [
                 'name' => 'required|max:150',
                 'icon' => 'nullable|mimes:png,jpg,jpeg,svg',
-                'priority' => 'required'
+                'priority' => 'required',
+                'parent_category' => 'nullable',
+                'description' => 'required'
             ]); 
     
             if($validation->fails()){
                 return response()->json([
-                    'error' => $validation->massages(),
+                    'error' => $validation->messages(),
                 ]);
     
             }else{
@@ -104,15 +110,20 @@ class CategoryController extends Controller
                     // end of delete old image from folder
     
                     $image_path = url('/images/category-images'.'/'.$image_name);
+                }else{
+                    $image_path = $category->image;
                 }
                 // end of image upload to folder
 
                 $slug = Str::slug($request->name, '-');
                 $category -> update([
+                    'parent_id' => $request->parent_category,
                     'name' => $request->name,
                     'image' => $image_path,
                     'priority' => $request->priority,
-                    'slug' => $slug
+                    'slug' => $slug,
+                    'description' => $request->description,
+
                 ]);      
     
                 if($category){
@@ -127,7 +138,8 @@ class CategoryController extends Controller
 
         }else{
             // return $id;
-            return view('back-end.category.edit_category', compact('category'));
+            $categories = Category::categoryTree();
+            return view('back-end.category.edit_category', compact('category', 'categories'));
         }
     }
     public function delete($id){
@@ -151,5 +163,22 @@ class CategoryController extends Controller
 
         }
 
+    }
+    public function changeStatus($id){
+        
+        $category = Category::find($id);
+        if($category->status == 1){
+            $status = 0;
+        }else{
+            $status = 1;
+        }
+        $category->update([
+            'status' => $status
+        ]);
+        if($category){
+            return redirect()->route('get_categories');
+        }else{
+            return redirect()->route('get_categories')->with('message', 'Something went wrong');
+        }
     }
 }

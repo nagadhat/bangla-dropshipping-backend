@@ -48,4 +48,16 @@ class Category extends Model
             }
         }
     }
+    public function parentCategory(){
+        return $this->hasOne('App\Models\Category', 'id', 'parent_id');
+    }
+    public function subCategories(){
+        return $this->hasMany('App\Models\Category', 'parent_id');
+    }
+    public static function getCategories(){
+        $getCategories = Category::with(['subCategories' => function($query){
+            $query->with('subCategories');
+        }])->get();
+        return $getCategories;
+    }
 }

@@ -35,7 +35,7 @@
                                 <div class="form-group mb-3">
                                     <div class="col-12">
                                         <div class="row justify-content-center">
-                                            <div class="col-4">
+                                            <div class="col-6">
                                                 <select class="form-select form-control" name="category_id" id="category" aria-label="Default select example">
                                                     <option selected>Select category</option>
                                                     @foreach($categories as $category)
@@ -43,16 +43,9 @@
                                                     @endforeach
                                                 </select>
                                             </div>
-                                            <div class="col-4">
+                                            <div class="col-6">
                                                 <select class="form-select form-control" name="sub_category_id" id="subCategory" aria-label="Default select example">
-                                                    <option selected>Select sub-category</option>
-                                                    
-                                                </select>
-                                            </div>
-                                            <div class="col-4">
-                                                <select class="form-select form-control" name="child_category_id" id="childCategory" aria-label="Default select example">
-                                                    <option selected>Select child-category</option>
-                                                   
+                                                    <option selected>Select brand</option>                  
                                                 </select>
                                             </div>
                                         </div>
@@ -75,6 +68,28 @@
                                 <div class="form-group mb-3">
                                     <div class="col-12">
                                         <div class="row justify-content-center">
+                                            <div class="col-4">
+                                                <label for="" class="form-label">Type</label>
+                                                <select class="form-select form-control" name="product_type" id="product_type" aria-label="Default select example">
+                                                    <option selected>Select type</option>
+                                                    <option value="1">Single</option>
+                                                    <option value="2">Variant</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-4">
+                                                <label for="" class="form-label">Model</label>
+                                                <input type="text" name="model" id="" class="form-control">   
+                                            </div>
+                                            <div class="col-4">
+                                                <label for="" class="form-label">SKU</label>
+                                                <input type="number" name="product_code" id="" class="form-control" value="{{ $product_code }}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3 productPrice">
+                                    <div class="col-12">
+                                        <div class="row justify-content-center">
                                             <div class="col-6"> 
                                                 <label for="" class="form-label">Price</label>
                                                 <input type="number" name="price" id="" class="form-control" step="any">                                             
@@ -86,10 +101,10 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group mb-3">
+                                <div class="form-group mb-3 productVariants">
                                     <div class="col-12">
                                         <div class="row justify-content-center">
-                                            <div class="col-4">
+                                            <div class="col-6">
                                                 <label for="" class="form-label">Size</label>
                                                 <div class="col-12 addSize">
                                                     <div class="row justify-content-center">
@@ -102,7 +117,7 @@
                                                     </div>       
                                                 </div>
                                             </div>
-                                            <div class="col-4">
+                                            <div class="col-6">
                                                 <label for="" class="form-label">Colour</label>
                                                 <div class="col-12 addColour">
                                                     <div class="row justify-content-center">
@@ -116,10 +131,10 @@
                                                 </div>
                                                 
                                             </div>
-                                            <div class="col-4">
+                                            <!-- <div class="col-4">
                                                 <label for="" class="form-label">Quantity</label>
                                                 <input type="number" name="quantity" id="" class="form-control">
-                                            </div>
+                                            </div> -->
                                         </div>
                                     </div>
                                 </div>
@@ -136,12 +151,31 @@
 
     <!-- script to preview multiple image before upload -->
     <script>
+       $("document").ready( function(){
+        $(".productVariants").hide();
+        $(".productPrice").hide();
        
-        function preview(elem, output = '') {
-            Array.from(elem.files).map((file) => {
-                const blobUrl = window.URL.createObjectURL(file)
-                output+=`<img class="my-2 me-2" height="100px" width="100px" class="me-1" src=${blobUrl}>`
-            })   
+       });
+
+       $("#product_type").on('change', function(){
+        var variantId = this.value;
+        if( variantId == 1){
+            $(".productPrice").show();
+            $(".productVariants").hide();
+        }else{
+            $(".productPrice").show();
+            $(".productVariants").show();
+        }
+
+        alert(categoryId);
+        // $("p").toggle();
+       });
+
+    function preview(elem, output = '') {
+        Array.from(elem.files).map((file) => {
+            const blobUrl = window.URL.createObjectURL(file)
+            output+=`<img class="my-2 me-2" height="100px" width="100px" class="me-1" src=${blobUrl}>`
+        })   
         elem.nextElementSibling.innerHTML = output
     }
 

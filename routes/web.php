@@ -10,6 +10,8 @@ use App\Http\Controllers\Admin\ChildCategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\BrandController;
+use App\Http\Controllers\Admin\SizeController;
+use App\Http\Controllers\Admin\ColourController;
 
 
 
@@ -40,6 +42,8 @@ Route::group(['middleware' => 'disable'], function(){
         Route::get('/categories', [CategoryController::class, 'index'])->name('get_categories');
         Route::match(['get', 'post'], '/edit/category/{id}', [CategoryController::class, 'update'])->name('edit_category');
         Route::get('/delete/category/{id}', [CategoryController::class, 'delete'])->name('delete_category');
+        Route::get('/change-category-status/{id}', [CategoryController::class, 'changeStatus'])->name('change_category_status');
+
 
         // route for sub-category
         Route::match(['get', 'post'], '/add/sub-category', [SubCategoryController::class, 'store'])->name('add_sub_category');
@@ -57,6 +61,18 @@ Route::group(['middleware' => 'disable'], function(){
          Route::match(['get', 'post'], '/edit/brand/{id}', [BrandController::class, 'update'])->name('edit_brand');
          Route::get('/delete/brand/{id}', [BrandController::class, 'delete'])->name('delete_brand');
          Route::get('/change-status/{id}', [BrandController::class, 'changeStatus'])->name('change_status');
+
+         // Routes for Size
+         Route::match(['get', 'post'], '/add/size', [SizeController::class, 'store'])->name('add_size');
+         Route::get('/sizes', [SizeController::class, 'index'])->name('get_sizes');
+         Route::match(['get', 'post'], '/edit/size/{id}', [SizeController::class, 'update'])->name('edit_size');
+         Route::get('/delete/size/{id}', [SizeController::class, 'delete'])->name('delete_size');
+
+         // Routes for colour
+         Route::match(['get', 'post'], '/add/colour', [ColourController::class, 'store'])->name('add_colour');
+         Route::get('/colours', [ColourController::class, 'index'])->name('get_colours');
+         Route::match(['get', 'post'], '/edit/colour/{id}', [ColourController::class, 'update'])->name('edit_colour');
+         Route::get('/delete/colour/{id}', [ColourController::class, 'delete'])->name('delete_colour');
        
          // route for slider
          Route::match(['get', 'post'], '/add/slider', [SliderController::class, 'store'])->name('add_slider');

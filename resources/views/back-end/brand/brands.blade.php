@@ -65,84 +65,43 @@
                             aria-label="default input example">
                     </div>
                     <div class="ms-auto  p-2 bd-highlight">
-                        <button type="button" class="btn btn-success"><i class="fa-solid fa-plus"></i> Create
-                            New</button>
+                        <a href="{{ route('add_brand') }}" class="btn btn-success text-white"><i class="fa-solid fa-plus"></i> Create
+                            New</a>
                     </div>
                 </div>
 
                 <div class="row row-cols-1 row-cols-lg-5 row-cols-md-3 row-cols-sm-3 g-4">
-                    <div class="col pb-3">
-                        <div class="card brand-card">
-                            <div class="">
-                                <div class="brandsCustomDesign">
-                                    <button type="button"
-                                        class="d-flex justify-content-around align-items-center px-2 py-1 bg-success text-white border-0">Active</button>
-                                    <button type="button" class="text-black border-0" onclick="myFunction('menu')">
-                                        <i class="fas fa-ellipsis-vertical"></i>
-                                    </button>
-                                </div>
-                                <div id="menu" class="brandsManage" style="display: none;">
-                                    <div class="brandsManageDesign">
-                                    <button type="button"
-                                        class="d-flex justify-content-around align-items-center px-2 py-1 bg-info text-white border-0">Manage</button>
+                    @foreach($brands as $brand)
+                        <div class="col pb-3">
+                            <div class="card brand-card">
+                                <div class="">
+                                    <div class="brandsCustomDesign">
+                                        @if($brand->status == 1)
+                                            <a href="{{ route('change_status', ['id' => $brand->id]) }}" class="btn d-flex justify-content-around align-items-center px-2 py-1 bg-success text-white border-0">Active</a>
+                                        @else
+                                            <a href="{{ route('change_status', ['id' => $brand->id]) }}" class="btn d-flex justify-content-around align-items-center px-2 py-1 bg-danger text-white border-0">Inactive</a>
+                                        @endif
+                                        <button type="button" class="text-black border-0" onclick="myFunction('menu{{ $brand->id }}')">
+                                            <i class="fas fa-ellipsis-vertical"></i>
+                                        </button>
+                                    </div>
+                                    <div id="menu{{ $brand->id }}" class="brandsManage" style="display: none;">
+                                        <div class="brandsManageDesign">
                                         <button type="button"
-                                        class="d-flex justify-content-around align-items-center px-2 py-1 bg-info text-white border-0">inActive</button>
+                                            class="d-flex justify-content-around align-items-center px-2 py-1 bg-info text-white border-0">Manage</button>
+                                            <button type="button"
+                                            class="d-flex justify-content-around align-items-center px-2 py-1 bg-info text-white border-0">inActive</button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <img src="{{ asset('/images/1.png') }}" class="card-img-top brandLogo" alt="...">
-                            <div class="card-body ">
-                                <h5 class="cardTitle">Card title</h5>
-                            </div>
+                                <img src="{{ $brand->image }}" class="card-img-top brandLogo" alt="...">
+                                <div class="card-body ">
+                                    <h5 class="cardTitle">{{ $brand->name }}</h5>
+                                </div>
 
-                        </div>
-                    </div>
-                    <div class="col pb-3">
-                        <div class="card brand-card">
-                            <div class="">
-                                <div class="brandsCustomDesign">
-                                    <button type="button"
-                                        class="d-flex justify-content-around align-items-center px-2 py-1 bg-success text-white border-0">Active</button>
-                                    <button type="button" class="text-black border-0" onclick="myFunction('menu2')">
-                                        <i class="fas fa-ellipsis-vertical"></i>
-                                    </button>
-                                </div>
-                                <div id="menu2" style="display: none;">
-                                    <button type="button" class="text-black border-0">Button 1</button>
-                                    <button type="button" class="text-black border-0">Button 2</button>
-                                </div>
                             </div>
-                            <img src="{{ asset('/images/1.png') }}" class="card-img-top brandLogo" alt="...">
-                            <div class="card-body ">
-                                <h5 class="cardTitle">Card title</h5>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="col pb-3">
-                        <div class="card brand-card">
-                            <div class="">
-                                <div class="brandsCustomDesign">
-                                    <button type="button"
-                                        class="d-flex justify-content-around align-items-center px-2 py-1 bg-success text-white border-0">Active</button>
-                                    <button type="button" class="text-black border-0" onclick="myFunction('menu3')">
-                                        <i class="fas fa-ellipsis-vertical"></i>
-                                    </button>
-                                </div>
-                                <div id="menu3" style="display: none;">
-                                    <button type="button" class="text-black border-0">Button 1</button>
-                                    <button type="button" class="text-black border-0">Button 2</button>
-                                </div>
-                            </div>
-                            <img src="{{ asset('/images/1.png') }}" class="card-img-top brandLogo" alt="...">
-                            <div class="card-body ">
-                                <h5 class="cardTitle">Card title</h5>
-                            </div>
-
-                        </div>
-                    </div>
-                   
-                   
+                        </div> 
+                    @endforeach               
                 </div>
 
             </div>
@@ -161,6 +120,7 @@
   // Add a click event listener to the ellipsis button
 
   function myFunction(elementID) {
+    // alert(elementID);
    var menu = document.getElementById(elementID);
    menu.style.display = (menu.style.display === 'none' || menu.style.display === '') ? 'block' : 'none';
 }

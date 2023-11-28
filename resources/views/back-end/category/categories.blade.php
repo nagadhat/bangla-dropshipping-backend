@@ -31,8 +31,10 @@
                                 <thead>
                                     <tr>
                                     <th scope="col">Serial No</th>
-                                    <th scope="col">Name</th>
                                     <th scope="col">Image</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Description</th>
+                                    <th scope="col">Parent</th>
                                     <th scope="col">Priority</th>
                                     <th scope="col">Action</th>
                                     </tr>
@@ -41,12 +43,18 @@
                                     @foreach($categories as $category)
                                         <tr>
                                         <th scope="row">{{ $loop->iteration }}</th>
-                                        <td>{{ $category->name }}</td>
                                         <td>
                                             @if( $category->image == null )
                                                 <p>Image not found</p>
                                             @else
                                                 <img src="{{ $category->image }}" height="50" width="50" alt="">
+                                            @endif
+                                        </td>
+                                        <td>{{ $category->name }}</td>
+                                        <td>{{ $category->description }}</td>
+                                        <td>
+                                            @if(isset($category->parentCategory->name))
+                                            {{ $category->parentCategory->name }}
                                             @endif
                                         </td>
                                         <td>
@@ -60,7 +68,11 @@
                                         </td>
                                         <td>
                                             <a href="{{ route('edit_category', ['id' => $category->id]) }}" class="btn btn-primary">Edit</a>
-                                            <a href="{{ route('delete_category', ['id' => $category->id]) }}" class="btn btn-danger">Delete</a>
+                                            @if($category->status == 1)
+                                            <a href="{{ route('change_category_status', ['id' => $category->id]) }}" class="btn btn-success">Active</a>
+                                            @else
+                                            <a href="{{ route('change_category_status', ['id' => $category->id]) }}" class="btn btn-danger">Inactive</a>
+                                            @endif
                                         </td>
                                         </tr>
                                     @endforeach

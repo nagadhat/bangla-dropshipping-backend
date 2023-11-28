@@ -24,6 +24,9 @@
     <link rel="stylesheet" href="{{ asset('back-end/assets/css/style.css') }}">
     <link href="//cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css" id="app-stylesheet" rel="stylesheet" type="text/css" />
 
+    <!-- css for summernote -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+
     @yield('styles')
 
 
@@ -56,6 +59,9 @@
 
     <!-- App js -->
     <script src="{{asset('back-end/assets/js/app.min.js')}}"></script>
+
+    <!-- js for summernote -->
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 
     @yield('scripts')
 

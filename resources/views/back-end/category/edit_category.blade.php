@@ -33,6 +33,31 @@
                                     <input type="text" name="name" id="" class="form-control" value="{{ $category->name }}">
                                 </div>
                                 <div class="form-group mb-3">
+                                    <label for="" class="form-label">Parent Category</label>
+                                    <select class="form-select form-control" name="parent_category" id="subCategory" aria-label="Default select example">
+                                        <option value="" selected>Select parent-category</option>
+                                        @foreach($categories as $category)
+                                            <option value="{{ $category->id }}">{{ $category->name }}
+                                                @foreach($category->children as $child)
+                                                <div class="py-5">
+                                                    <option class="py-5" value="{{ $child->id }}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ $child->name }} 
+                                                </div>
+                                                        @foreach($child->children as $child2)
+                                                            <option value="{{ $child2->id }}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ $child2->name }} </option>
+                                                        @endforeach
+                                                    </option>
+                                                @endforeach
+                                        
+                                            </option>
+                                        @endforeach
+                                        
+                                    </select>    
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="" class="form-label">Description</label>
+                                    <textarea class="form-control" name="description" id="summernote" cols="30" rows="10">{{ $category->description }}</textarea>
+                                </div>
+                                <div class="form-group mb-3">
                                     <label for="" class="form-label">Photo</label>
                                     <div class="row align-items-center">
                                         <div class="col">
@@ -74,6 +99,11 @@
     </div>
 
     <script>
+         $(document).ready(function() {
+            $('#summernote').summernote({
+                height: 300
+            });                
+         });
         selectImage.onchange = evt => {
             preview = document.getElementById('preview');
             preview.style.display = 'block';
