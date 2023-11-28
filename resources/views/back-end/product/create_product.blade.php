@@ -55,7 +55,7 @@
                                     <label for="" class="form-label">Description</label>
                                     <textarea class="form-control" name="description" id="summernote" cols="30" rows="10"></textarea>
                                 </div>
-                                <div class="form-group mb-3">
+                                <div id="singleImageProduct" class="form-group mb-3">
                                     <label for="" class="form-label">Photo</label>
                                     <!-- <div class="row align-items-center"> -->
                                         
@@ -85,7 +85,7 @@
                                 <div class="productVariants py-3 addVariants">
                                     <h1 class="text-center pb-4">Variations</h1>
                                     <div class="form-group mb-3 py-1">
-                                        <div class="col-12">
+                                        <div class="col-11">
                                             <div class="row justify-content-center">
                                                 <div class="col-4">
                                                     <label for="" class="form-label">Image</label>
@@ -105,7 +105,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-12 py-1">
+                                        <div class="col-11 py-1">
                                             <div class="row justify-content-center">
                                                 <div class="col-4">
                                                     <label for="" class="form-label">Price</label>
@@ -179,8 +179,8 @@
                                                 <label for="" class="form-label">SKU</label>
                                                 <input type="number" name="product_code" id="" class="form-control" value="{{ $product_code }}">
                                             </div>
-                                            <div class="col-3"> 
-                                                <label for="" class="form-label">Price</label>
+                                            <div id="singleProductPrice" class="col-3"> 
+                                                <label for=""  class="form-label">Price</label>
                                                 <input type="number" name="price" id="" class="form-control" step="any">                                             
                                             </div>
                                         </div>
@@ -211,13 +211,21 @@
        });
 
        $("#product_type").on('change', function(){
+        const singleProductPrice=document.querySelector("#singleProductPrice");
+        const singleImageProduct=document.querySelector("#singleImageProduct");
+        console.log(singleProductPrice)
         var variantId = this.value;
         if( variantId == 1){
             $(".productPrice").show();
             $(".productVariants").hide();
+            singleProductPrice.style.display="block"
+            singleImageProduct.style.display="block"
         }else{
             $(".productPrice").show();
             $(".productVariants").show();
+            singleProductPrice.style.display="none"
+            singleImageProduct.style.display="none"
+
         }
 
         alert(categoryId);
