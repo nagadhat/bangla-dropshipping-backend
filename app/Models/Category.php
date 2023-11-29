@@ -60,4 +60,7 @@ class Category extends Model
         }])->get();
         return $getCategories;
     }
+    public function isChild(){
+        return $this->parent_id != null;
+    }
 }
